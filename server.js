@@ -11,7 +11,7 @@ import compression from "compression";
 import cors from "cors";
 import cspOption from "./csp-options.js";
 
-// Crréation du serveur express
+// Création du serveur express
 const app = express();
 
 // Ajout de middlewares
