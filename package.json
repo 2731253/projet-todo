@@ -1,7 +1,7 @@
 {
   "name": "projet-todo",
   "version": "1.0.0",
-  "description": "Gabarit Serveur avec Node.js et express",
+  "description": "Application de gestion de tâches collaboratives pour les équipes de travail, inspirée de Trello",
   "main": "server.js",
   "type": "module",
   "scripts": {
