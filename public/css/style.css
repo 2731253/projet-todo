@@ -1,5 +1,99 @@
-h1 {
- color: blue;
- font-size: large;
- font-weight: 800;
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  background-color: gray;
+  color: white;
+  height: 4rem;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+main {
+  position: relative;
+}
+
+#conteneur-bouton-header {
+  width: 50vw;
+  display: flex;
+}
+
+.bouton-header {
+  background-color: gray;
+  border: none;
+  border-left: 2px black solid;
+  flex-grow: 1;
+  height: 4rem;
+}
+
+.bouton-header:hover {
+  background-color: dimgray;
+  cursor: pointer;
+}
+
+.bouton-header:active {
+  background-color: blue;
+}
+
+#conteneur-tache {
+  display: flex;
+  margin: 3rem;
+  gap: 2rem;
+  justify-content: center;
+  text-align: start;
+  color: white;
+}
+
+.colonne-tache {
+  background-color: gray;
+  width: 20%;
+  height: fit-content;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.entete-tache {
+  display: flex;
+  width: 100%;
+  height: 2.5rem;
+  background-color: black;
+  border-radius: 0.5rem;
+  text-align: start;
+  align-items: center;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.bas-tache {
+  background-color: black;
+  border-radius: 0.5rem;
+}
+
+#ajouter-tache-a-faire {
+  border: none;
+  background-color: transparent;
+  font-size: 2rem;
+  color: white;
+}
+
+#test {
+  border-bottom: 3px black solid;
+  margin: 0 1rem;
+  text-align: start;
+  padding: 0.5rem;
+  align-content: center;
 }

@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gabarit</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <script type="module" src="./js/main.js"></script>
- </head>
- <body>
-  <h1>Gabarit</h1>
- </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabarit</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <header>
+      <div id="conteneur-bouton-header">
+        <button class="bouton-header">Filtrage</button>
+        <button class="bouton-header">Tri par date</button>
+        <button class="bouton-header">Historique</button>
+        <button class="bouton-header">Utilisateur</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="conteneur-tache">
+        <div id="aFaire" class="colonne-tache">
+          <div class="entete-tache">À faire</div>
+          <div id="test">Titre</div>
+          <div class="bas-tache">
+            <button id="ajouter-tache-a-faire">+</button>
+          </div>
+        </div>
+        <div id="enCours" class="colonne-tache">En cours</div>
+        <div id="enRevision" class="colonne-tache">En révision</div>
+        <div id="terminer" class="colonne-tache">Terminée</div>
+      </div>
+    </main>
+  </body>
 </html>
