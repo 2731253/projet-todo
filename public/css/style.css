@@ -29,6 +29,12 @@ header{
     justify-content: right;
 }
 
+header .boutton{
+    background-color: #8a6d4d;
+    color: #f1cda4;
+    border: none;
+}
+
 .barre_outils .boutton{
     height: 100%;
     padding: 1rem;
