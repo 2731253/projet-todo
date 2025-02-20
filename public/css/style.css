@@ -1,3 +1,11 @@
+/* 
+beige:  #f1cda4
+brun pale:  #bf976b
+brun fonce: #8a6d4d
+vert: #776e18
+jaune: #b88417
+rouge: #842c2c 
+*/
 html{
     box-sizing: border-box;
 }
@@ -8,5 +16,89 @@ html{
 
 body{
     margin: 0;
+    background-color: #f1cda4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+    
+header{
+    background-color: #8a6d4d;
+    height: 5vh;
+    display: flex;
+    justify-content: right;
+}
+
+.barre_outils .boutton{
+    height: 100%;
+    padding: 1rem;
+    border-left: 2px solid #000;
+    align-items: center;
+    color: #f1cda4;
+}
+
+.colonnes_statut{
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    align-items:flex-start;
+    justify-content: center;
+}
+
+.statut{
+    background-color: #8a6d4d;
+    width: 25vw;
+    border-radius: 10%;
+}
+
+.statut h3{
+    text-align: center;
+    height: 2rem;
+    color: #f1cda4;
+}
+
+.statut ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    background-color:#bf976b;
+}
+.statut li{
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #8a6d4d;  
+}
+
+.statut p{
+    color: #8a6d4d;
+    font-weight: 800;
+}
+
+.statut .priorite{
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: #842c2c;
+}
+
+.add_task{
+  position: relative;
+  padding: 0.7rem;
+}
+
+.add_task svg{
+    position: absolute;
+    fill: #f1cda4;
+    right: 5%;
+    bottom: 10%;
+    height: 1rem;
+    stroke: #f1cda4 ;
+    stroke-width: .2rem;
+}
+
+main {
+    flex: 1;
 }
 
