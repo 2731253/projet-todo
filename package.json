@@ -1,14 +1,14 @@
 {
   "name": "projet-todo",
   "version": "1.0.0",
-  "description": "Application de gestion de tâches collaboratives pour les équipes de travail, inspirée de Trello",
+  "description": "Projet de site web de gestion des tâches en ligne",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Isabelle Brule",
+  "author": "Eunice Muleka, Isabelle Brûlé, Israel-Claude Nsimbi, Justin Dallaire",
   "license": "UNLICENSED",
   "dependencies": {
     "compression": "^1.7.5",
