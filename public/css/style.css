@@ -81,19 +81,35 @@ main {
 .bas-tache {
   background-color: black;
   border-radius: 0.5rem;
+  display: flex;
+  justify-content: end;
 }
 
-#ajouter-tache-a-faire {
+.ajouter-tache {
   border: none;
   background-color: transparent;
   font-size: 2rem;
   color: white;
+  cursor: pointer;
 }
 
-#test {
-  border-bottom: 3px black solid;
-  margin: 0 1rem;
+.ajouter-tache:hover {
+  color: red;
+}
+
+.ajouter-tache:active {
+  color: blue;
+}
+
+.test {
+  border-top: 3px black solid;
+  margin: 0 0.5rem;
   text-align: start;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   align-content: center;
+  font-size: 1.3rem;
+}
+
+.colonne-tache .todo .test:first-child {
+  border-top: none;
 }
