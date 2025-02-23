@@ -1,99 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projet todo</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script type="module" src="./js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabarit</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="./js/main.js"></script>
 </head>
 
 <body>
-    <header class="barre_outils">
-        <input class="boutton" type="button" value="Filtrage">
-        <input class="boutton" type="button" value="Tri par date">
-        <input class="boutton" type="button" value="Historique">
-        <input class="boutton" type="button" value="Utilisateur">
-    </header>
+  <header>
+    <div id="conteneur-bouton-header" class="barre_outils">
+      <input class="bouton-header" type="button" value="Filtrage">
+      <input class="bouton-header" type="button" value="Tri par date">
+      <input class="bouton-header" type="button" value="Historique">
+      <input class="bouton-header" type="button" value="Utilisateur">
+    </div>
+  </header>
+  <main>
+    <div id="conteneur-tache">
+      <div id="aFaire" class="colonne-tache">
+        <div class="entete-tache">À faire</div>
 
-    <main>
-        <section class="colonnes_statut">
-            <div class="statut A_faire">
-                <h3>À faire</h3>
-                <ul>
-                    <li>
-                        <p>Tache 1</p>
-                        <div class="priorite"></div>
-                    </li>
-                </ul>
-                <div class="add_task">
-                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
-                            fill-rule="nonzero" />
-                    </svg>
-                </div>
-            </div>
-            <div class="statut En_cours">
-                <h3>En cours</h3>
-                <ul>
-                    <li>
-                        <p>Tache 2</p>
-                        <div class="priorite"></div>
-                    </li>
-                    <li>
-                        <p>Tache 3</p>
-                        <div class="priorite"></div>
-                    </li>
-                </ul>
-                <div class="add_task">
-                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
-                            fill-rule="nonzero" />
-                    </svg>
-                </div>
-            </div>
-            <div class="statut En_revision">
-                <h3>En révision</h3>
-                <ul>
-                    <li>
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 3</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
+        </div>
+      </div>
 
-                    </li>
-                </ul>
-                <div class="add_task">
-                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
-                            fill-rule="nonzero" />
-                    </svg>
-                </div>
-            </div>
-            <div class="statut Termine">
-                <h3>Terminée</h3>
-                <ul>
-                    <li>
+      <div id="enCours" class="colonne-tache">
+        <div class="entete-tache">En cours</div>
 
-                    </li>
-                </ul>
-                <div class="add_task">
-                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2"
-                        viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="m11 11h-7.25c-.414 0-.75.336-.75.75s.336.75.75.75h7.25v7.25c0 .414.336.75.75.75s.75-.336.75-.75v-7.25h7.25c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-7.25v-7.25c0-.414-.336-.75-.75-.75s-.75.336-.75.75z"
-                            fill-rule="nonzero" />
-                    </svg>
-                </div>
-            </div>
-        </section>
-    </main>
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 3</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
+        </div>
+      </div>
 
-    <footer>
-    </footer>
+      <div id="enRevision" class="colonne-tache">
+        <div class="entete-tache">En révision</div>
+
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
+        </div>
+      </div>
+
+      <div id="terminer" class="colonne-tache">
+        <div class="entete-tache">Terminée</div>
+
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
+        </div>
+      </div>
+    </div>
+  </main>
 </body>
 
 </html>
-
