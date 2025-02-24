@@ -1,74 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gabarit</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script type="module" src="./js/main.js"></script>
-  </head>
-  <body>
-    <header>
-      <div id="conteneur-bouton-header">
-        <button class="bouton-header">Filtrage</button>
-        <button class="bouton-header">Tri par date</button>
-        <button class="bouton-header">Historique</button>
-        <button class="bouton-header">Utilisateur</button>
-      </div>
-    </header>
 
-    <main>
-      <div id="conteneur-tache">
-        <div id="aFaire" class="colonne-tache">
-          <div class="entete-tache">À faire</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabarit</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="./js/main.js"></script>
+</head>
 
-          <div class="todo">
-            <div class="test">Titre 1</div>
-            <div class="test">Titre 2</div>
-            <div class="test">Titre 3</div>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
+<body>
+  <header>
+    <nav id="conteneur-bouton-header" class="barre_outils">
+      <input class="bouton-header" type="button" value="Filtrage">
+      <input class="bouton-header" type="button" value="Tri par date">
+      <input class="bouton-header" type="button" value="Historique">
+      <input class="bouton-header" type="button" value="Utilisateur">
+    </nav>
+  </header>
+  <main>
+    <div id="conteneur-tache">
+      <div id="aFaire" class="colonne-tache">
+        <div class="entete-tache">À faire</div>
+
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 3</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
         </div>
-
-        <div id="enCours" class="colonne-tache">
-          <div class="entete-tache">En cours</div>
-
-          <div class="todo">
-            <div class="test">Titre 1</div>
-            <div class="test">Titre 2</div>
-            <div class="test">Titre 3</div>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
-        </div>
-
-        <div id="enRevision" class="colonne-tache">
-          <div class="entete-tache">En révision</div>
-
-          <div class="todo">
-            <div class="test">Titre 1</div>
-            <div class="test">Titre 2</div>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
-        </div>
-
-        <div id="terminer" class="colonne-tache">
-          <div class="entete-tache">Terminée</div>
-
-          <div class="todo">
-            <div class="test">Titre 1</div>
-            <div class="test">Titre 2</div>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
         </div>
       </div>
-    </main>
-  </body>
+
+      <div id="enCours" class="colonne-tache">
+        <div class="entete-tache">En cours</div>
+
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 3</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
+        </div>
+      </div>
+
+      <div id="enRevision" class="colonne-tache">
+        <div class="entete-tache">En révision</div>
+
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
+        </div>
+      </div>
+
+      <div id="terminer" class="colonne-tache">
+        <div class="entete-tache">Terminée</div>
+
+        <div class="todo">
+          <ul>
+            <li>
+              <p>Titre 1</p>
+              <div class="priorite"></div>
+            </li>
+            <li>
+              <p>Titre 2</p>
+              <div class="priorite"></div>
+            </li>
+          </ul>
+        </div>
+        <div class="bas-tache">
+          <input type="button" class="ajouter-tache" value="+">
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
 </html>
