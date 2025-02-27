@@ -17,3 +17,24 @@ export const supprimerTodo = (id) => {
     listeDesTodos.splice(indexTodoASupprimer, 1);
   }
 };
+
+/**
+ * Permet d'ajouter une tâche à la liste des tâches
+ * @param {*} titre, description, statut, priorite, date_limite, assignation
+ * @returns
+ */
+export const ajoutTodo = async (titre, description, statut, priorite, date_creation, date_limite, assignation) => {
+    const todo = await prisma.todo.create({
+        data: {
+            titre,
+            description,
+            statut,
+            priorite,
+            date_creation,
+            date_limite,
+            assignation,
+        },
+    });
+    return todo;
+};
+

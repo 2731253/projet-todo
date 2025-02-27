@@ -16,8 +16,8 @@ model todo{
   description   String?
   statut        String   @default("A faire")
   priorite      String?
-  date_creation DateTime
-  date_limite   DateTime
+  date_creation DateTime  @default(now())
+  date_limite   DateTime?
   assignation   String?
 }
 
