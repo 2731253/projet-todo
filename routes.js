@@ -18,8 +18,6 @@ router.delete("/api/todo/:id", (request, response) => {
   }
 });
 
-export default router;
-
 //Route pour ajouter une tache
 router.post("/api/todo", async (request, response) => {
   const { titre, description, statut, priorite, date_creation, date_limite, assignation } = request.body;
@@ -32,3 +30,31 @@ router.post("/api/todo", async (request, response) => {
       response.status(400).json({ error: error.message });
   }
 });
+
+//Route pour obtenir la liste des taches
+router.get("/api/todos", async (request, response) => {
+  try {
+      const todos = await getTodos();
+      response.status(200).json(todos);
+  } catch (error) {
+      response.status(400).json({ error: error.message });
+  }
+});
+
+//Route pour obtenir une tâche
+router.get("/api/todo/:id", async (request, response) => {
+  const { id } = request.params;
+  try {
+      const todo = await getTodo(parseInt(id));
+      if (todo) {
+      response.status(200).json(todo);
+      }
+      else {
+        response.status(404).json({ message: "Tâche non trouvée" });
+      }
+  } catch (error) {
+      response.status(400).json({ error: error.message });
+  }
+});
+
+export default router;

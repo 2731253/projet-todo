@@ -38,3 +38,24 @@ export const ajoutTodo = async (titre, description, statut, priorite, date_creat
     return todo;
 };
 
+/**
+ * Pour obtenir la liste de toutes les tâches
+ * @returns la liste des tâches
+ */
+export const getTodos = async () => {
+  const todos = await prisma.todo.findMany();
+  return todos;
+};
+
+/**
+ * Pour obtenir une tâche par son id
+ * @returns la tâche
+ */
+export const getTodo = async (id) => {
+  const todo = await prisma.todo.findUnique({
+    where: {
+        id,
+    },
+});
+  return todo;
+};
