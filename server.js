@@ -5,6 +5,7 @@ import "dotenv/config";
 import routerExterne from "./routes.js";
 
 // Importation des fichiers et librairies
+import { engine } from "express-handlebars";
 import express, { json } from "express";
 import helmet from "helmet";
 import compression from "compression";
@@ -13,6 +14,9 @@ import cspOption from "./csp-options.js";
 
 // Création du serveur express
 const app = express();
+app.engine("handlebars", engine()); //Pour informer express que l'on utilise handlebars
+app.set("view engine", "handlebars"); //Pour dire a express que le moteur de rendu est handlebars
+app.set("views", "./views"); //Pour dire a express ou se trouvent les vues
 
 // Ajout de middlewares
 app.use(helmet(cspOption));
