@@ -5,7 +5,17 @@ import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo } from "./model/
 const router = Router();
 
 //Definition des routes
-/*  ............. */
+
+/*
+router.get("/", async (request, response) => {
+  response.render("index", {
+      titre: "Accueil",
+      styles: ["css/style.css"],
+      scripts: ["./js/main.js"],
+      todos: await getTodos(),
+  });
+});
+*/
 
 router.delete("/api/todo/:id", (request, response) => {
   const { id } = request.params;
