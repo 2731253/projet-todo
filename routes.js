@@ -72,8 +72,9 @@ router.get("/api/todo/:id", async (request, response) => {
 //Route pour mettre a jour une tache
 router.put("/api/todo/:id", async (request, response) => {
   const { id } = request.params;
+  const { titre, description, statut, priorite, date_limite, assignation } = request.body;
   try {
-      const todo = await updateTodo(parseInt(id));
+      const todo = await updateTodo(parseInt(id),titre, description, statut, priorite, date_limite, assignation);
       if (todo) {
           response
               .status(200)

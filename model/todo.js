@@ -65,19 +65,18 @@ export const getTodo = async (id) => {
  * @param {*} id 
  * @returns la tâche mise a jour
  */
-export const updateTodo = async (id) => {
-    const todo = await prisma.todo.findUnique({
-        where: {
-            id,
-        },
-    });
- 
-    const todoUpdated = await prisma.todo.update({
+export const updateTodo = async (id,titre, description, statut, priorite, date_limite, assignation) => {
+    const todoUpdated = await prisma.todo.updateMany({
         where: {
             id,
         },
         data: {
-            est_faite: !todo.est_faite,
+            titre,
+            description,
+            statut,
+            priorite,
+            date_limite,
+            assignation,
         },
     });
  
