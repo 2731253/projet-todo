@@ -59,3 +59,27 @@ export const getTodo = async (id) => {
 });
   return todo;
 };
+
+/**
+ * Pour mettre a jour une tâche
+ * @param {*} id 
+ * @returns la tâche mise a jour
+ */
+export const updateTodo = async (id) => {
+    const todo = await prisma.todo.findUnique({
+        where: {
+            id,
+        },
+    });
+ 
+    const todoUpdated = await prisma.todo.update({
+        where: {
+            id,
+        },
+        data: {
+            est_faite: !todo.est_faite,
+        },
+    });
+ 
+    return todoUpdated;
+};
