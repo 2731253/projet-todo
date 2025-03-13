@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { supprimerTodo, ajoutTodo, getTodo, getTodos } from "./model/todo.js";
+import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo } from "./model/todo.js";
+
 
 const router = Router();
 
@@ -51,26 +52,6 @@ router.get("/api/todos", async (request, response) => {
   }
 });
 
-//Mise a jour d'une tâche
-export const updateTodo = async (id) => {
-    const todo = await prisma.todo.findUnique({
-        where: {
-            id,
-        },
-    });
- 
-    const todoUpdated = await prisma.todo.update({
-        where: {
-            id,
-        },
-        data: {
-            est_faite: !todo.est_faite,
-        },
-    });
- 
-    return todoUpdated;
-};
-
 //Route pour obtenir une tâche
 router.get("/api/todo/:id", async (request, response) => {
   const { id } = request.params;
@@ -86,6 +67,26 @@ router.get("/api/todo/:id", async (request, response) => {
       response.status(400).json({ error: error.message });
   }
 });
+
+// Mettre a jour une tâche
+//Route pour mettre a jour une tache
+router.put("/api/todo/:id", async (request, response) => {
+  const { id } = request.params;
+  const { titre, description, statut, priorite, date_limite, assignation } = request.body;
+  try {
+      const todo = await updateTodo(parseInt(id),titre, description, statut, priorite, date_limite, assignation);
+      if (todo) {
+          response
+              .status(200)
+              .json({ todo, message: "Tâche mise à jour avec succès" });
+      } else {
+          response.status(404).json({ message: "Tâche non trouvée" });
+      }
+  } catch (error) {
+      response.status(400).json({ error: error.message });
+  }
+});
+
 
 export default router;
 
