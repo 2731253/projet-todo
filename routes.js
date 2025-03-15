@@ -6,16 +6,27 @@ const router = Router();
 
 //Definition des routes
 
-/*
+
 router.get("/", async (request, response) => {
   response.render("index", {
       titre: "Accueil",
       styles: ["css/style.css"],
-      scripts: ["./js/main.js"],
+      scripts: ["./js/main.js","./js/validation.js"],
       todos: await getTodos(),
   });
 });
-*/
+
+router.get("/details/:id", async (request, response) => {
+  const { id } = request.params;
+  const todo = await getTodo(parseInt(id));;
+  response.render("details", {
+      todo : todo,
+      titre: todo.titre,
+      styles: ["/css/style.css","/css/details.css"],
+      scripts: ["./js/main.js"],
+  });
+});
+
 
 router.delete("/api/todo/:id", (request, response) => {
   const { id } = request.params;

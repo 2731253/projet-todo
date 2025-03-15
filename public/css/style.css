@@ -1,5 +1,16 @@
+:root{
+    --couleur-beige: #f1cda4;
+    --couleur-brun_pale: #bf976b;
+    --couleur-brun_fonce: #8a6d4d;
+    --couleur-vert: #776e18;
+    --couleur-jaune: #b88417;
+    --couleur-rouge:#842c2c;
+}
+
 html {
     box-sizing: border-box;
+    color: var(--couleur-beige);
+    
 }
 
 *,
@@ -10,22 +21,22 @@ html {
 
 body {
     margin: 0;
-    background-color: #f1cda4;
+    background-color: var(--couleur-beige);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 header {
-    background-color: #8a6d4d;
+    background-color: var(--couleur-brun_fonce);
     height: 5vh;
     display: flex;
     justify-content: right;
 }
 
 header .bouton-header {
-    background-color: #8a6d4d;
-    color: #f1cda4;
+    background-color: var(--couleur-brun_fonce);
+    color: var(--couleur-beige);
     border: none;
     height: 100%;
 }
@@ -38,7 +49,7 @@ header .bouton-header:hover {
     height: 100%;
     border-left: 2px solid #000;
     align-items: center;
-    color: #f1cda4;
+    color: var(--couleur-beige);
 }
 
 #conteneur-tache {
@@ -50,18 +61,18 @@ header .bouton-header:hover {
 }
 
 .colonne-tache {
-    background-color: #8a6d4d;
+    background-color: var(--couleur-brun_pale);
     width: 25vw;
     border-radius: 10%;
 }
 
 .colonne-tache .entete-tache {
-    background-color: #8a6d4d;
-    color: #f1cda4;
+    background-color: var(--couleur-brun_fonce);
+    color: var(--couleur-brun_pale);
     display: flex;
     width: 100%;
     height: 2.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.5rem 0.5rem 0 0;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
@@ -71,7 +82,7 @@ header .bouton-header:hover {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
-    background-color: #bf976b;
+    background-color: var(--couleur-brun_pale);
 }
 
 .colonne-tache li {
@@ -79,11 +90,13 @@ header .bouton-header:hover {
     padding: 1rem;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #8a6d4d;
+}
+.colonne-tache li:not(:last-child){
+    border-bottom: 2px solid var(--couleur-brun_fonce);
 }
 
 .colonne-tache p {
-    color: #8a6d4d;
+    color: var(--couleur-brun_fonce);
     font-weight: 800;
 }
 
@@ -91,18 +104,18 @@ header .bouton-header:hover {
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%;
-    background-color: #842c2c;
+    background-color: var(--couleur-rouge);
 }
 
 .bas-tache {
-    background-color: #8a6d4d;
-    border-radius: 0.5rem;
+    background-color: var(--couleur-brun_fonce);
+    border-radius:  0 0 .5rem 0.5rem;
     display: flex;
     justify-content: end;
 }
 
 .bas-tache .ajouter-tache {
-    color: #f1cda4;
+    color: var(--couleur-brun_pale);
     border: none;
     background-color: transparent;
     font-size: 2rem;

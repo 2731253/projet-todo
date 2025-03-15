@@ -1,0 +1,112 @@
+body{
+    background-color: var(--couleur-brun_pale)
+}
+header {
+    background-color: var(--couleur-brun_fonce);
+    height: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+header h1{
+    margin: 0;
+    padding: 0rem 1rem;
+}
+
+header .fermer{
+    fill: var(--couleur-beige);
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    padding: 2rem
+}
+
+.details-resume{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.details-historique{
+    display: flex;
+    gap: 1.5rem;
+    margin: 3rem 0;
+}
+
+.details{
+    background-color: var(--couleur-brun_fonce);
+    
+}
+
+.detail-ligne{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    
+}
+
+.detail-ligne .detail-key{
+    min-width: 6.5rem;
+    margin: 0;
+}
+
+.detail-ligne .detail-value{
+    margin: 0;
+}
+
+.bar-separation{
+    border-radius: 19%;
+    border: 2px solid var(--couleur-beige);
+
+}
+
+.historique{
+    background-color: var(--couleur-brun_pale);
+}
+
+.historique .historique-entete{
+    background-color: var(--couleur-brun_fonce);
+    padding: 0.5rem;
+    border-radius: 10% 10% 0 0;
+
+}
+
+.historique .historique-ligne{
+    height: 3rem;
+    color: var(--couleur-brun_fonce);
+    background-color: var(--couleur-beige);
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+}
+
+.historique .historique-ligne p{
+    margin: 0;
+}
+
+.historique .historique-pied{
+    background-color: var(--couleur-brun_fonce);
+    padding: 0.5rem;
+    border-radius: 0 0 10% 10%;
+}
+
+.div-arrow{
+    background-color: var(--couleur-brun_fonce);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 2.5rem;
+    border-radius: 10%;
+}
+
+.div-arrow .arrow{
+    fill: var(--couleur-beige);
+    height: 2rem;
+}
+
