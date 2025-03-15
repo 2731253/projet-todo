@@ -68,10 +68,12 @@ main{
 
 .historique{
     background-color: var(--couleur-brun_pale);
+    min-width: 11rem;
 }
 
 .historique .historique-entete{
     background-color: var(--couleur-brun_fonce);
+    text-align: center;
     padding: 0.5rem;
     border-radius: 10% 10% 0 0;
 
@@ -91,6 +93,7 @@ main{
 
 .historique .historique-pied{
     background-color: var(--couleur-brun_fonce);
+    text-align: center;
     padding: 0.5rem;
     border-radius: 0 0 10% 10%;
 }
