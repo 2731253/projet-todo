@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo } from "./model/todo.js";
+import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo,getFilterTodo } from "./model/todo.js";
 
 
 const router = Router();
@@ -98,6 +98,16 @@ router.put("/api/todo/:id", async (request, response) => {
   }
 });
 
+//Route pour obtenir la liste des taches
+router.get("/api/filtretodos/", async (request, response) => {
+  const {typeFilter} = request.body;
+  try {
+      const todos = await getFilterTodo(typeFilter);
+      response.status(200).json(todos);
+  } catch (error) {
+      response.status(400).json({ error: error.message });
+  }
+});
 
 export default router;
 
