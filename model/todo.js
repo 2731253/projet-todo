@@ -97,3 +97,27 @@ export const getFilterTodo = async (filterType) => {
 });
   return todos;
 };
+
+/**
+ * Pour obtenir une liste des tache trier en fonction soit de la date de creation soit de la date finale(sortBy)
+ * @returns la tâche
+ */
+export const getSortedTodos = async (sortBy,sort) => {
+  let todos;
+  if(sortBy === "date_limite" ){
+    todos = await prisma.todo.findMany({
+      orderBy: {
+        date_limite: sort, 
+      },
+  });
+}
+else {
+  todos = await prisma.todo.findMany({
+    orderBy: {
+      date_creation: sort, 
+    },
+  });
+}
+
+  return todos;
+};

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo,getFilterTodo } from "./model/todo.js";
+import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo,getFilterTodo, getSortedTodos } from "./model/todo.js";
 
 
 const router = Router();
@@ -98,7 +98,7 @@ router.put("/api/todo/:id", async (request, response) => {
   }
 });
 
-//Route pour obtenir la liste des taches
+//Route pour obtenir la liste des taches filtrer
 router.get("/api/filtretodos/", async (request, response) => {
   const {typeFilter} = request.body;
   try {
@@ -108,6 +108,18 @@ router.get("/api/filtretodos/", async (request, response) => {
       response.status(400).json({ error: error.message });
   }
 });
+
+//Route pour obtenir la liste des taches trier
+router.get("/api/sortedTodo/", async (request, response) => {
+  const {sortBy, sort} = request.body;
+  try {
+      const todos = await getSortedTodos(sortBy,sort);
+      response.status(200).json(todos);
+  } catch (error) {
+      response.status(400).json({ error: error.message });
+  }
+});
+
 
 export default router;
 
