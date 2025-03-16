@@ -110,6 +110,10 @@ header .bouton-header:hover {
   cursor: pointer;
 }
 
+.bouton:hover {
+  background-color: #86694a;
+}
+
 .bouton:active {
   background-color: #765d42;
 }
@@ -133,4 +137,5 @@ header .bouton-header:hover {
 #bouton-retour {
   font-size: 3rem;
   padding-bottom: 5px;
+  text-decoration: none;
 }
