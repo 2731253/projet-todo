@@ -1,3 +1,12 @@
+:root{
+    --couleur-beige: #f1cda4;
+    --couleur-brun_pale: #bf976b;
+    --couleur-brun_fonce: #8a6d4d;
+    --couleur-vert: #776e18;
+    --couleur-jaune: #b88417;
+    --couleur-rouge:#842c2c;
+}
+
 body{
     background-color: var(--couleur-brun_pale)
 }

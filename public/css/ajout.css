@@ -1,3 +1,12 @@
+:root{
+  --couleur-beige: #f1cda4;
+  --couleur-brun_pale: #bf976b;
+  --couleur-brun_fonce: #8a6d4d;
+  --couleur-vert: #776e18;
+  --couleur-jaune: #b88417;
+  --couleur-rouge:#842c2c;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -10,22 +19,22 @@ html {
 
 body {
   margin: 0;
-  background-color: #f1cda4;
+  background-color: var(--couleur-beige);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 header {
-  background-color: #8a6d4d;
+  background-color: var(--couleur-brun_fonce);
   height: 5vh;
   display: flex;
   justify-content: right;
 }
 
 header .bouton-header {
-  background-color: #8a6d4d;
-  color: #f1cda4;
+  background-color: var(--couleur-brun_fonce);
+  color: var(--couleur-beige);
   border: none;
   height: 100%;
 }
@@ -38,7 +47,7 @@ header .bouton-header:hover {
   height: 100%;
   border-left: 2px solid #000;
   align-items: center;
-  color: #f1cda4;
+  color: var(--couleur-beige);
 }
 
 #ajout-todo-form {
@@ -48,10 +57,10 @@ header .bouton-header:hover {
   width: 45%;
   justify-self: center;
   margin-top: 5rem;
-  background-color: #8a6d4d;
+  background-color: var(--couleur-brun_fonce);
   /* padding: 1rem; */
   border-radius: 5px;
-  color: #f1cda4;
+  color: var(--couleur-beige);
 }
 
 .form-group {
@@ -82,7 +91,7 @@ header .bouton-header:hover {
   flex: 1;
   padding: 0.5rem;
   width: 100%;
-  color: #f1cda4;
+  color: var(--couleur-beige);
   font-size: 1rem;
   min-width: 12rem;
   margin-top: 1rem;
@@ -97,12 +106,12 @@ header .bouton-header:hover {
 
 #todo-background {
   padding-top: 2rem;
-  background-color: #f1cda4;
+  background-color: var(--couleur-beige);
 }
 
 .bouton {
-  background-color: #8a6d4d;
-  color: #f1cda4;
+  background-color: var(--couleur-brun_fonce);
+  color: var(--couleur-beige);
   border: none;
   border-radius: 5px;
   padding: 1rem;
@@ -111,7 +120,7 @@ header .bouton-header:hover {
 }
 
 .bouton:hover {
-  background-color: #86694a;
+  background-color: var(--couleur-brun_fonce);
 }
 
 .bouton:active {
