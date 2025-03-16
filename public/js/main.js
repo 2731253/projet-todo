@@ -1,16 +1,21 @@
 const todoTemplate = document.getElementById("todo-template");
-
 const ajouterTache = document.getElementsByClassName("ajouter-tache");
+const boutonSauvegarder = document.getElementById("todo-sauvegarder");
 
-window.onload = function () {
-  const now = new Date();
+window.onload = () => {
+  const formatLocal = (date) => {
+    const offset = date.getTimezoneOffset() * 60000; // Offset in milliseconds
+    return new Date(date - offset).toISOString().slice(0, 16);
+  };
 
-  const today = new Date(now);
-  const formattedToday = today.toISOString().slice(0, 16);
-  document.getElementById("todo-date-creation").value = formattedToday;
+  const aujordhui = new Date();
+  const demain = new Date(now);
+  tomorrow.setDate(now.getDate() + 1);
 
-  now.setDate(now.getDate() + 1);
-  const tomorrow = new Date(now);
-  const formattedTomorrow = tomorrow.toISOString().slice(0, 16);
-  document.getElementById("todo-date-limite").value = formattedTomorrow;
+  document.getElementById("todo-date-creation").value = formatLocal(aujordhui);
+  document.getElementById("todo-date-limite").value = formatLocal(demain);
 };
+
+boutonSauvegarder.addEventListener("click", function (event) {
+  event.preventDefault();
+});

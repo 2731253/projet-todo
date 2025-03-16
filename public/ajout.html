@@ -10,9 +10,6 @@
   <body>
     <header>
       <nav id="conteneur-bouton-header" class="barre_outils">
-        <input class="bouton-header" type="button" value="Filtrage" />
-        <input class="bouton-header" type="button" value="Tri par date" />
-        <input class="bouton-header" type="button" value="Historique" />
         <input class="bouton-header" type="button" value="Utilisateur" />
       </nav>
     </header>
@@ -67,9 +64,17 @@
           </select>
         </div>
         <div id="todo-background">
-          <button type="submit" id="todo-sauvegarder">Sauvegarder</button>
+          <button type="submit" id="todo-sauvegarder" class="bouton">
+            Sauvegarder
+          </button>
         </div>
       </form>
+      <div id="conteneur-bouton-bas">
+        <button id="bouton-retour" class="bouton-bas bouton">&#8592;</button>
+        <button id="bouton-supprimer" class="bouton-bas bouton">
+          Supprimer
+        </button>
+      </div>
     </main>
   </body>
 </html>
