@@ -4,23 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>projet todo</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script type="module" src="./js/main.js"></script>
+  <title>{{titre}}</title>
+  {{#each styles}}
+  <link rel="stylesheet" href={{this}} />
+  {{/each}}
+
+  {{#each scripts}}
+  <script type="module" src={{this}}></script>
+  {{/each}}
 </head>
 
 <body>
-  <header>
-    <nav id="conteneur-bouton-header" class="barre_outils">
-      <input class="bouton-header" type="button" value="Filtrage">
-      <input class="bouton-header" type="button" value="Tri par date">
-      <input class="bouton-header" type="button" value="Historique">
-      <input class="bouton-header" type="button" value="Utilisateur">
-    </nav>
-  </header>
-  <main>
-    {{{body}}}
-  </main>
+{{{body}}}
 </body>
 
 </html>

@@ -1,21 +1,32 @@
 import { Router } from "express";
-import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo } from "./model/todo.js";
+import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo,getFilterTodo, getSortedTodos } from "./model/todo.js";
 
 
 const router = Router();
 
 //Definition des routes
 
-/*
+
 router.get("/", async (request, response) => {
   response.render("index", {
       titre: "Accueil",
       styles: ["css/style.css"],
-      scripts: ["./js/main.js"],
+      scripts: ["./js/main.js","./js/validation.js"],
       todos: await getTodos(),
   });
 });
-*/
+
+router.get("/details/:id", async (request, response) => {
+  const { id } = request.params;
+  const todo = await getTodo(parseInt(id));;
+  response.render("details", {
+      todo : todo,
+      titre: todo.titre,
+      styles: ["/css/style.css","/css/details.css"],
+      scripts: ["./js/main.js"],
+  });
+});
+
 
 router.delete("/api/todo/:id", (request, response) => {
   const { id } = request.params;
@@ -82,6 +93,28 @@ router.put("/api/todo/:id", async (request, response) => {
       } else {
           response.status(404).json({ message: "Tâche non trouvée" });
       }
+  } catch (error) {
+      response.status(400).json({ error: error.message });
+  }
+});
+
+//Route pour obtenir la liste des taches filtrer
+router.get("/api/filtretodos/", async (request, response) => {
+  const {typeFilter} = request.body;
+  try {
+      const todos = await getFilterTodo(typeFilter);
+      response.status(200).json(todos);
+  } catch (error) {
+      response.status(400).json({ error: error.message });
+  }
+});
+
+//Route pour obtenir la liste des taches trier
+router.get("/api/sortedTodo/", async (request, response) => {
+  const {sortBy, sort} = request.body;
+  try {
+      const todos = await getSortedTodos(sortBy,sort);
+      response.status(200).json(todos);
   } catch (error) {
       response.status(400).json({ error: error.message });
   }

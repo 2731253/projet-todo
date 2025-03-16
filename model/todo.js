@@ -82,3 +82,42 @@ export const updateTodo = async (id,titre, description, statut, priorite, date_l
  
     return todoUpdated;
 };
+
+/**
+ * Pour obtenir une tâche par son filterType 
+ * quand on aura la table pour les priorité on pourra rechercher avec l'id de la priorite
+ * grace au jointure
+ * @returns la tâche
+ */
+export const getFilterTodo = async (filterType) => {
+  const todos = await prisma.todo.findMany({
+    where: {
+        priorite:filterType,
+    },
+});
+  return todos;
+};
+
+/**
+ * Pour obtenir une liste des tache trier en fonction soit de la date de creation soit de la date finale(sortBy)
+ * @returns la tâche
+ */
+export const getSortedTodos = async (sortBy,sort) => {
+  let todos;
+  if(sortBy === "date_limite" ){
+    todos = await prisma.todo.findMany({
+      orderBy: {
+        date_limite: sort, 
+      },
+  });
+}
+else {
+  todos = await prisma.todo.findMany({
+    orderBy: {
+      date_creation: sort, 
+    },
+  });
+}
+
+  return todos;
+};
