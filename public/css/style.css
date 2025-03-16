@@ -10,13 +10,12 @@
 html {
     box-sizing: border-box;
     color: var(--couleur-beige);
-    
 }
 
 *,
 *::after,
 *::before {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
@@ -42,7 +41,7 @@ header .bouton-header {
 }
 
 header .bouton-header:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .barre_outils .bouton-header {
@@ -53,11 +52,11 @@ header .bouton-header:hover {
 }
 
 #conteneur-tache {
-    padding: 2rem;
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    justify-content: center;
+  padding: 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .colonne-tache {
@@ -91,6 +90,7 @@ header .bouton-header:hover {
     align-items: center;
     justify-content: space-between;
 }
+
 .colonne-tache li:not(:last-child){
     border-bottom: 2px solid var(--couleur-brun_fonce);
 }
@@ -120,16 +120,20 @@ header .bouton-header:hover {
     background-color: transparent;
     font-size: 2rem;
     cursor: pointer;
+    text-decoration: none;
+    font-weight: 900;
+    margin-right: 0.5rem;
 }
 
+
 .ajouter-tache:hover {
-    color: red;
+  color: red;
 }
 
 .ajouter-tache:active {
-    color: blue;
+  color: blue;
 }
 
 main {
-    flex: 1;
+  flex: 1;
 }

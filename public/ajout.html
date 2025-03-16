@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>projet todo</title>
+    <link rel="stylesheet" href="css/ajout.css" />
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <form id="ajout-todo-form">
+        <div class="form-group">
+          <label for="todo-titre">Titre:</label>
+          <input type="text" id="todo-titre" />
+        </div>
+
+        <div class="form-group">
+          <label for="todo-description">Description:</label>
+          <input type="text" id="todo-description" />
+        </div>
+
+        <div class="form-group">
+          <label for="todo-statut">Statut:</label>
+          <select name="todo-statut" id="todo-statut">
+            <option value="vide" disabled selected></option>
+            <option value="a-faire">À faire</option>
+            <option value="en-cours">En cours</option>
+            <option value="revision">En révision</option>
+            <option value="termine">Terminée</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="todo-priorite">Priorité:</label>
+          <select name="todo-priorite" id="todo-priorite">
+            <option value="vide"></option>
+            <option value="faible">Faible</option>
+            <option value="moyenne">Moyenne</option>
+            <option value="eleve">Élevée</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="todo-date-creation">Date de création:</label>
+          <input type="datetime-local" id="todo-date-creation" />
+        </div>
+
+        <div class="form-group">
+          <label for="todo-date-limite">Date limite:</label>
+          <input type="datetime-local" id="todo-date-limite" />
+        </div>
+
+        <div class="form-group">
+          <label for="todo-assignation">Assignation:</label>
+          <select name="todo-assignation" id="todo-assignation">
+            <option value="vide"></option>
+            <option value="utilisateur-1">Utilisateur 1</option>
+            <option value="utilisateur-2">Utilisateur 2</option>
+            <option value="utilisateur-3">Utilisateur 3</option>
+            <option value="utilisateur-4">Utilisateur 4</option>
+          </select>
+        </div>
+        <div id="todo-background">
+          <button type="submit" id="todo-sauvegarder" class="bouton">
+            Sauvegarder
+          </button>
+        </div>
+      </form>
+      <div id="conteneur-bouton-bas">
+        <a href="index.html" id="bouton-retour" class="bouton-bas bouton"
+          >&#8592;</a
+        >
+        <button id="bouton-supprimer" class="bouton-bas bouton">
+          Supprimer
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
