@@ -11,10 +11,19 @@ import helmet from "helmet";
 import compression from "compression";
 import cors from "cors";
 import cspOption from "./csp-options.js";
+import handlebarsHelpers from 'handlebars-helpers';  // Import handlebars-helpers
+
+// Ajout de helpers eq et date a handlebars
+const handlebars = engine({
+    helpers: {
+        ...handlebarsHelpers()
+    }
+});
 
 // Création du serveur express
 const app = express();
-app.engine("handlebars", engine()); //Pour informer express que l'on utilise handlebars
+
+app.engine("handlebars", handlebars); //Pour informer express que l'on utilise handlebars
 app.set("view engine", "handlebars"); //Pour dire a express que le moteur de rendu est handlebars
 app.set("views", "./views"); //Pour dire a express ou se trouvent les vues
 

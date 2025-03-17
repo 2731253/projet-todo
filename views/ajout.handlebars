@@ -1,114 +1,66 @@
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>projet todo</title>
-  </head>
-  <body>
-    <header>
-      <nav id="conteneur-bouton-header" class="barre_outils">
-        <input class="bouton-header" type="button" value="Filtrage" />
-        <input class="bouton-header" type="button" value="Tri par date" />
-        <input class="bouton-header" type="button" value="Historique" />
-        <input class="bouton-header" type="button" value="Utilisateur" />
-      </nav>
-    </header>
-    <main>
-      <div id="conteneur-tache">
-        <div id="aFaire" class="colonne-tache">
-          <div class="entete-tache">À faire</div>
+<header></header>
+<main>
+  <form id="ajout-todo-form" action="/api/todo{{#if todo}}/{{todo.id}}{{/if}}" method="{{#if todo}}PUT{{else}}POST{{/if}}">
+    <div class="form-group">
+      <label for="todo-titre">Titre:</label>
+      <input type="text" id="todo-titre" name="todo-titre" {{#if todo}}value="{{todo.titre}}"{{/if}} required/>
+    </div>
 
-          <div class="todo">
-            <ul>
-              <template id="todo-template">
-                <li>
-                  <p></p>
-                  <div class="priorite"></div>
-                </li>
-              </template>
-              <li>
-                <p>Titre 1</p>
-                <div class="priorite"></div>
-              </li>
-              <li>
-                <p>Titre 2</p>
-                <div class="priorite"></div>
-              </li>
-              <li>
-                <p>Titre 3</p>
-                <div class="priorite"></div>
-              </li>
-            </ul>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="todo-description">Description:</label>
+      <input type="text" id="todo-description" name="todo-description" {{#if todo}}value="{{todo.description}}"{{/if}}/>
+    </div>
 
-        <div id="enCours" class="colonne-tache">
-          <div class="entete-tache">En cours</div>
+    <div class="form-group">
+      <label for="todo-statut-id">Statut:</label>
+      <select name="todo-statut-id" id="todo-statut-id">
+        {{#each statuts}}
+            <option value="{{this.id}}" {{#if ../todo}}{{#if (eq ../todo.statut_id this.id)}}selected{{/if}}{{else}}{{#if @first}}selected{{/if}}{{/if}}>{{this.nom}}</option>
+        {{/each}}
+      </select>
+    </div>
 
-          <div class="todo">
-            <ul>
-              <li>
-                <p>Titre 1</p>
-                <div class="priorite"></div>
-              </li>
-              <li>
-                <p>Titre 2</p>
-                <div class="priorite"></div>
-              </li>
-              <li>
-                <p>Titre 3</p>
-                <div class="priorite"></div>
-              </li>
-            </ul>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="todo-priorite-id">Priorité:</label>
+      <select name="todo-priorite-id" id="todo-priorite-id">
+        {{#each priorites}}
+            <option value="{{this.id}}" {{#if ../todo}}{{#if (eq ../todo.priorite_id this.id)}}selected{{/if}}{{else}}{{#if @first}}selected{{/if}}{{/if}}>{{this.nom}}</option>
+        {{/each}}
+      </select>
+    </div>
 
-        <div id="enRevision" class="colonne-tache">
-          <div class="entete-tache">En révision</div>
+    <div class="form-group">
+      <label for="todo-date-creation">Date de création:</label>
+      <input type="datetime-local" id="todo-date-creation" {{#if todo}}{{#if todo.date_creation}}value="{{date todo.date_creation format="YYYY-MM-DDThh:mm:ss"}}"{{/if}}{{/if}} disabled/>
+    </div>
 
-          <div class="todo">
-            <ul>
-              <li>
-                <p>Titre 1</p>
-                <div class="priorite"></div>
-              </li>
-              <li>
-                <p>Titre 2</p>
-                <div class="priorite"></div>
-              </li>
-            </ul>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
-        </div>
+    <div class="form-group">
+      <label for="todo-date-limite">Date limite:</label>
+      <input type="datetime-local" id="todo-date-limite" {{#if todo}}{{#if todo.date_limite}}value="{{date todo.date_limite format="YYYY-MM-DDThh:mm:ss"}}"{{/if}}{{/if}}/>
+    </div>
 
-        <div id="terminer" class="colonne-tache">
-          <div class="entete-tache">Terminée</div>
-
-          <div class="todo">
-            <ul>
-              <li>
-                <p>Titre 1</p>
-                <div class="priorite"></div>
-              </li>
-              <li>
-                <p>Titre 2</p>
-                <div class="priorite"></div>
-              </li>
-            </ul>
-          </div>
-          <div class="bas-tache">
-            <input type="button" class="ajouter-tache" value="+" />
-          </div>
-        </div>
-      </div>
-    </main>
-  </body>
-</html>
+    <div class="form-group">
+      <label for="todo-assignation-id">Assignation:</label>
+      <select name="todo-assignation-id" id="todo-assignation-id">
+        {{#each utilisateurs}}
+            <option value="{{this.id}}" {{#if ../todo}}{{#if (eq ../todo.assignation_id this.id)}}selected{{/if}}{{else}}{{#if @first}}selected{{/if}}{{/if}}>{{this.nom}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div id="todo-background">
+      <button type="submit" id="todo-sauvegarder" class="bouton">
+        Sauvegarder
+      </button>
+    </div>
+  </form>
+  <div id="conteneur-bouton-bas">
+    <a href="/" id="bouton-retour" class="bouton-bas bouton"
+      >&#8592;</a
+    >
+    {{#if todo}}
+    <button id="bouton-supprimer" class="bouton-bas bouton">
+      Supprimer
+    </button>
+    {{/if}}
+  </div>
+</main>
