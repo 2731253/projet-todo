@@ -100,7 +100,21 @@ header .bouton-header:hover {
     font-weight: 800;
 }
 
-.colonne-tache .priorite {
+.colonne-tache .priorite1 {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--couleur-vert);
+}
+
+.colonne-tache .priorite2 {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--couleur-jaune);
+}
+
+.colonne-tache .priorite3 {
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%;

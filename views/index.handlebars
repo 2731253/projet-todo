@@ -8,112 +8,26 @@
 </header>
 <main>
     <div id="conteneur-tache">
-        <div id="aFaire" class="colonne-tache">
-            <div class="entete-tache">À faire</div>
-
+        {{#each statuts}}
+        <div id="statut-{{this.id}}" class="colonne-tache">
+            <div class="entete-tache">{{this.nom}}</div>
+            <!--utilisation de handlebar helper eq pour pouvoir faire (todo.statut_id == statut.id) -->
             <div class="todo">
                 <ul>
-                    <template id="todo-template">
-                        <li>
-                        <p>Titre 1</p>
-                        <div class="priorite"></div>
-                        </li>
-                    </template>                   
+                    {{#each ../todos}}
+                    {{#if (eq this.statut_id ../this.id)}}
                     <li>
-                        <p>Titre 2</p>
-                        <div class="priorite"></div>
+                    <p><a href="/details/{{this.id}}">{{this.titre}}</a></p>
+                    <div class="priorite{{this.priorite.id}}"></div>
                     </li>
-                    <li>
-                        <p>Titre 3</p>
-                        <div class="priorite"></div>
-                    </li>
+                    {{/if}}
+                    {{/each}}
                 </ul>
             </div>
             <div class="bas-tache">
-                <input type="button" class="ajouter-tache" value="+">
+                <a href="/ajout_tache"><input type="button" class="ajouter-tache" value="+"></a>
             </div>
         </div>
-
-        <div id="enCours" class="colonne-tache">
-            <div class="entete-tache">En cours</div>
-
-            <div class="todo">
-                <ul>
-                    <template id="todo-template">
-                        <li>
-                        <p>Titre 1</p>
-                        <div class="priorite"></div>
-                        </li>
-                    </template>  
-                    <li>
-                        <p><a href="/details/1">Titre 1</a></p>
-                        <div class="priorite"></div>
-                    </li>
-                    <li>
-                        <p>Titre 2</p>
-                        <div class="priorite"></div>
-                    </li>
-                    <li>
-                        <p>Titre 3</p>
-                        <div class="priorite"></div>
-                    </li>
-                </ul>
-            </div>
-            <div class="bas-tache">
-                <input type="button" class="ajouter-tache" value="+">
-            </div>
-        </div>
-
-        <div id="enRevision" class="colonne-tache">
-            <div class="entete-tache">En révision</div>
-
-            <div class="todo">
-                <ul>
-                    <template id="todo-template">
-                        <li>
-                        <p>Titre 1</p>
-                        <div class="priorite"></div>
-                        </li>
-                    </template>  
-                    <li>
-                        <p>Titre 1</p>
-                        <div class="priorite"></div>
-                    </li>
-                    <li>
-                        <p>Titre 2</p>
-                        <div class="priorite"></div>
-                    </li>
-                </ul>
-            </div>
-            <div class="bas-tache">
-                <input type="button" class="ajouter-tache" value="+">
-            </div>
-        </div>
-
-        <div id="terminer" class="colonne-tache">
-            <div class="entete-tache">Terminée</div>
-
-            <div class="todo">
-                <ul>
-                    <template id="todo-template">
-                        <li>
-                        <p>Titre 1</p>
-                        <div class="priorite"></div>
-                        </li>
-                    </template>  
-                    <li>
-                        <p>Titre 1</p>
-                        <div class="priorite"></div>
-                    </li>
-                    <li>
-                        <p>Titre 2</p>
-                        <div class="priorite"></div>
-                    </li>
-                </ul>
-            </div>
-            <div class="bas-tache">
-                <input type="button" class="ajouter-tache" value="+">
-            </div>
-        </div>
+        {{/each}}
     </div>
 </main>

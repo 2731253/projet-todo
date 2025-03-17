@@ -1,53 +1,82 @@
-const todoTemplate = document.getElementById("todo-template");
-const ajouterTache = document.getElementsByClassName("ajouter-tache");
+const ajoutTodoForm = document.getElementById("ajout-todo-form");
 const boutonSauvegarder = document.getElementById("todo-sauvegarder");
 const boutonSupprimer = document.getElementById("bouton-supprimer");
 const todoTitre = document.getElementById("todo-titre");
 const todoDescription = document.getElementById("todo-description");
-const todoStatut = document.getElementById("todo-statut");
-const todoPriorite = document.getElementById("todo-priorite");
-const todoDateCreation = document.getElementById("todo-date-creation");
+const todoStatut = document.getElementById("todo-statut-id");
+const todoPriorite = document.getElementById("todo-priorite-id");
 const todoDateLimite = document.getElementById("todo-date-limite");
-const todoAssignation = document.getElementById("todo-assignation");
+const todoAssignation = document.getElementById("todo-assignation-id");
 
-window.onload = () => {
-  const formatLocal = (date) => {
-    const offset = date.getTimezoneOffset() * 60000;
-    return new Date(date - offset).toISOString().slice(0, 16);
+if (boutonSauvegarder) {
+boutonSauvegarder.addEventListener("click", async function (event) {
+  event.preventDefault();
+
+  const formulaire = ajoutTodoForm;
+  const url = ajoutTodoForm.action;
+
+  let method = "";
+  if (ajoutTodoForm.method == "post") {
+    // On ajoute un todo (POST)
+    method = "POST";
+  } else {
+    // On modifie un todo (PUT)
+    method = "PUT";
+  }
+
+  // Mettre les donnees du formulaire dans data
+  const data = {
+    priorite_id: todoPriorite.value,
+    titre: todoTitre.value,
+    description: todoDescription.value,
+    statut_id: todoStatut.value,
+    priorite_id: todoPriorite.value,
+    assignation_id: todoAssignation.value,
   };
 
-  const aujordhui = new Date();
-  const demain = new Date(aujordhui);
-  demain.setDate(aujordhui.getDate() + 1);
+  // Ajoute la date en EPOCH millisecondes
+  if (todoDateLimite.value) {
+    data["date_limite"] = new Date(todoDateLimite.value).getTime();
+  }
 
-  document.getElementById("todo-date-creation").value = formatLocal(aujordhui);
-  document.getElementById("todo-date-limite").value = formatLocal(demain);
-};
+  // Appel de l'API
+  const reponse = await fetch(url, {
+      method: method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+  });
 
-function pageReset() {
-  const formatLocal = (date) => {
-    const decalage = date.getTimezoneOffset() * 60000;
-    return new Date(date - decalage).toISOString().slice(0, 16);
-  };
+  if (reponse.ok) {
+      const todo = await reponse.json();
+      console.log(todo);
 
-  const aujordhui = new Date();
-  const demain = new Date(aujordhui);
-  demain.setDate(aujordhui.getDate() + 1);
-
-  todoTitre.value = "";
-  todoDescription.value = "";
-  todoStatut.value = "vide";
-  todoPriorite.value = "vide";
-  todoDateCreation.value = formatLocal(aujordhui);
-  todoDateLimite.value = formatLocal(demain);
-  todoAssignation.value = "vide";
+      // On retourne a la page principale
+      window.location.href = "/";
+  }
+});
 }
 
-boutonSauvegarder.addEventListener("click", function (event) {
-  event.preventDefault();
-  window.location.href = "index.html";
-});
+if (boutonSupprimer) {
+boutonSupprimer.addEventListener("click", async function () {
+  const url = ajoutTodoForm.action; // "/api/todo/:id"
 
-boutonSupprimer.addEventListener("click", function () {
-  pageReset();
+  // Appel de l'API
+  const reponse = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+  });
+
+  if (reponse.ok) {
+      const todo = await reponse.json();
+      console.log(todo);
+
+      // On retourne a la page principale
+      window.location.href = "/";
+  }
 });
+}

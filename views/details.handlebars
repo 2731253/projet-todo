@@ -25,23 +25,23 @@
                 </div>
                 <div class="detail-ligne">
                     <p class="detail-key">Statut:</p>
-                    <p class="detail-value">{{todo.statut}}</p>
+                    <p class="detail-value">{{todo.statut.nom}}</p>
                 </div>
                 <div class="detail-ligne">
                     <p class="detail-key">Priorité:</p>
-                    <p class="detail-value">{{todo.priorite}}</p>
+                    <p class="detail-value">{{todo.priorite.nom}}</p>
                 </div>
                 <div class="detail-ligne">
-                    <p class="detail-key">Date de céation:</p>
-                    <p class="detail-value">{{todo.date_creation}}</p>
+                    <p class="detail-key">Date de création:</p>
+                    <p class="detail-value">{{date todo.date_creation format="YYYY-MM-DDThh:mm:ss"}}</p>
                 </div>
                 <div class="detail-ligne">
                     <p class="detail-key">Date limite:</p>
-                    <p class="detail-value">{{todo.date_limite}}</p>
+                    <p class="detail-value">{{#if todo.date_limite}}{{date todo.date_limite format="YYYY-MM-DDThh:mm:ss"}}{{/if}}</p>
                 </div>
                 <div class="detail-ligne">
                     <p class="detail-key">Assignation:</p>
-                    <p class="detail-value">{{todo.assignation}}</p>
+                    <p class="detail-value">{{todo.assignation.nom}}</p>
                 </div>
             </div>
             <div class="bar-separation">
@@ -49,14 +49,18 @@
             </div>
             <div class="historique">
                 <div class="historique-entete">Historique de la tâche</div>
+                    {{#each todo.changements}}
                     <div class="historique-ligne">
-                        <p>kfalfldsfjkaf</p>
+                        <p>[{{date this.date_creation format="YYYY-MM-DDThh:mm:ss"}}] {{this.par_user.nom}} ({{this.par_user.id}}): {{this.changement}}</p>
                     </div>
-                <div class="historique-pied">Modifier ou supprimer</div>
+                    {{/each}}
+                <div class="historique-pied"><a href="/modifie_tache/{{todo.id}}">Modifier ou supprimer</a></div>
             </div>
         </div>
-        <div class="div-arrow">
-            &#8592;
-        </div>
+        <a href="/">
+            <div class="div-arrow">
+                &#8592;
+            </div>
+        </a>
     </div>
 </main>

@@ -10,18 +10,51 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model todo{
+model Todo{
   id            Int      @id @default(autoincrement())
   titre         String
   description   String?
-  statut        String   @default("A faire")
-  priorite      String?
+
+  statut_id     Int?
+  statut        Statut?  @relation(fields: [statut_id], references: [id])
+
+  priorite_id   Int?
+  priorite      Priorite?  @relation(fields: [priorite_id], references: [id])
+
   date_creation DateTime  @default(now())
   date_limite   DateTime?
-  assignation   String?
+
+  assignation_id  Int?
+  assignation     User? @relation(fields: [assignation_id], references: [id])
+
+  changements   Changement[]
 }
 
-model user{
+model User{
   id            Int      @id @default(autoincrement())
   nom           String
+  todos         Todo[]
+  changements   Changement[]
+}
+
+model Statut {
+  id    Int     @id @default(autoincrement())
+  nom   String  @unique
+  todos Todo[]
+}
+
+model Priorite {
+  id    Int     @id @default(autoincrement())
+  nom   String  @unique
+  todos Todo[]
+}
+
+model Changement{
+  id            Int      @id @default(autoincrement())
+  date_creation DateTime @default(now())
+  changement    String
+  par_user_id   Int
+  par_user      User     @relation(fields: [par_user_id], references: [id])
+  todo_id       Int?
+  todo          Todo?     @relation(fields: [todo_id], references: [id], onDelete: SetNull)
 }
