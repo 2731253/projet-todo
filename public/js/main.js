@@ -51,21 +51,3 @@ boutonSauvegarder.addEventListener("click", function (event) {
 boutonSupprimer.addEventListener("click", function () {
   pageReset();
 });
-
-function cacherOptionVide(selectElement) {
-  const optionVide = selectElement.querySelector('option[value="vide"]');
-
-  optionVide.style.display = "none";
-
-  selectElement.addEventListener("change", function () {
-    if (selectElement.value !== "vide") {
-      optionVide.style.display = "none";
-    } else {
-      optionVide.style.display = "";
-    }
-  });
-}
-
-cacherOptionVide(todoStatut);
-cacherOptionVide(todoPriorite);
-cacherOptionVide(todoAssignation);
