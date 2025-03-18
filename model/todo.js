@@ -245,15 +245,13 @@ export const updateTodo = async (id,titre, description, statut_id, priorite_id, 
 };
 
 /**
- * Pour obtenir une tâche par son filterType 
- * quand on aura la table pour les priorité on pourra rechercher avec l'id de la priorite
- * grace au jointure
+ * Pour obtenir une tâche par son filterType qui est l'Id dans la table priorite
  * @returns la tâche
  */
 export const getFilterTodo = async (filterType) => {
   const todos = await prisma.todo.findMany({
     where: {
-        priorite:filterType,
+      priorite_id:filterType,
     },
 });
   return todos;
