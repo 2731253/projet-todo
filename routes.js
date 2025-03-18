@@ -1,55 +1,105 @@
 import { Router } from "express";
-import { supprimerTodo, ajoutTodo, getTodo, getTodos,updateTodo,getFilterTodo, getSortedTodos } from "./model/todo.js";
-
+import { supprimerTodo, ajoutTodo, getTodo, getTodos, updateTodo, getFilterTodo, getSortedTodos, getPriorites, getStatuts, getUtilisateurs } from "./model/todo.js";
+import { isIDValid, isTitreValid, isDescriptionValid, isStatutValid, isPrioriteValid, isDateCreationValid, isDateLimiteValid, isAssignationValid, isSortByValid, isSortValid, isTypeFilterValid} from "./validation.js";
 
 const router = Router();
 
 //Definition des routes
 
-
+//Route pour afficher les taches par statuts
 router.get("/", async (request, response) => {
+  const statuts = await getStatuts();
+  const todos = await getTodos();
   response.render("index", {
       titre: "Accueil",
-      styles: ["css/style.css"],
-      scripts: ["./js/main.js","./js/validation.js"],
-      todos: await getTodos(),
+      styles: ["/css/style.css"],
+      scripts: ["/js/main.js","/js/validation.js"],
+      todos: todos,
+      priorites: await getPriorites(),
+      statuts: statuts,
+      utilisateurs: await getUtilisateurs(),
+  });
+});
+
+//Route pour ajouter une tache
+router.get('/ajout_tache', async (request, response) => {
+  response.render('ajout', {
+    titre: "Ajout Tache",
+    styles: ["/css/ajout.css"],
+    scripts: ["/js/main.js","/js/validation.js"],
+    priorites: await getPriorites(),
+    statuts: await getStatuts(),
+    utilisateurs: await getUtilisateurs(),
+  });
+});
+
+//Route pour modifier une tache
+router.get('/modifie_tache/:id', async (request, response) => {
+  const { id } = request.params;
+  const todo = await getTodo(parseInt(id));;
+  response.render('ajout', {
+    titre: "Modifie Tache",
+    styles: ["/css/ajout.css"],
+    scripts: ["/js/main.js","/js/validation.js"],
+    todo,
+    priorites: await getPriorites(),
+    statuts: await getStatuts(),
+    utilisateurs: await getUtilisateurs(),
   });
 });
 
 router.get("/details/:id", async (request, response) => {
   const { id } = request.params;
-  const todo = await getTodo(parseInt(id));;
-  response.render("details", {
-      todo : todo,
-      titre: todo.titre,
-      styles: ["/css/style.css","/css/details.css"],
-      scripts: ["./js/main.js"],
-  });
+  if(isIDValid(id)) {
+    try {
+      const todo = await getTodo(parseInt(id));
+      response.render("details", {
+        todo,
+        titre: todo.titre,
+        styles: ["/css/style.css","/css/details.css"],
+        scripts: ["/js/main.js"],
+      });
+    } catch {
+      response.status(400).json({ error: error.message });
+    }
+  } else {
+    response.status(400).json({error: "ID invalide"});
+}
 });
 
-
-router.delete("/api/todo/:id", (request, response) => {
+//Route pour supprimer une tache
+router.delete("/api/todo/:id", async (request, response) => {
   const { id } = request.params;
-  try {
-    const todo = supprimerTodo(parseInt(id));
-    if (!todo) {
-      response.status(200).json({ note, message: "Todo supprimer" });
+  if(isIDValid(id)) {
+    try {
+      const todo = await supprimerTodo(parseInt(id));
+      if (todo) {
+        response.status(200).json({ todo, message: "Todo supprimer" });
+      } else {
+        response.status(400).json({error: "ID inconnu"});
+      }
+    } catch (error) {
+      response.status(400).json({ error: error.message });
     }
-  } catch (error) {
-    response.status(400).json({ error: error.message });
+  } else {
+    response.status(400).json({error: "ID invalide"});
   }
 });
 
 //Route pour ajouter une tache
 router.post("/api/todo", async (request, response) => {
-  const { titre, description, statut, priorite, date_creation, date_limite, assignation } = request.body;
-  try {
-      const todo = await ajoutTodo(titre, description, statut, priorite,  date_creation, date_limite, assignation);
-      response
-          .status(200)
-          .json({ todo, message: "Tâche ajoutée avec succès" });
-  } catch (error) {
-      response.status(400).json({ error: error.message });
+  const { titre, description, statut_id, priorite_id, date_creation, date_limite, assignation_id } = request.body;
+  if (isTitreValid(titre) && isDescriptionValid(description) && isStatutValid(statut_id) && isPrioriteValid(priorite_id) && isAssignationValid(assignation_id) && isDateCreationValid(date_creation) && isDateLimiteValid(date_limite)) {
+    try {
+        const todo = await ajoutTodo(titre, description, parseInt(statut_id), parseInt(priorite_id),  date_creation, date_limite, parseInt(assignation_id));
+        response
+            .status(200)
+            .json({ todo, message: "Tâche ajoutée avec succès" });
+    } catch (error) {
+        response.status(400).json({ error: error.message });
+    }
+  } else {
+    response.status(400).json({error: "Valeur en parametre invalide"});
   }
 });
 
@@ -66,26 +116,31 @@ router.get("/api/todos", async (request, response) => {
 //Route pour obtenir une tâche
 router.get("/api/todo/:id", async (request, response) => {
   const { id } = request.params;
-  try {
-      const todo = await getTodo(parseInt(id));
-      if (todo) {
-      response.status(200).json(todo);
-      }
-      else {
-        response.status(404).json({ message: "Tâche non trouvée" });
-      }
-  } catch (error) {
-      response.status(400).json({ error: error.message });
-  }
+  if(isIDValid(id)){
+    try {
+        const todo = await getTodo(parseInt(id));
+        if (todo) {
+        response.status(200).json(todo);
+        }
+        else {
+          response.status(404).json({ message: "Tâche non trouvée" });
+        }
+    } catch (error) {
+        response.status(400).json({ error: error.message });
+    }
+  } else {
+    response.status(400).json({error: "ID invalide"});
+  } 
 });
 
 // Mettre a jour une tâche
 //Route pour mettre a jour une tache
 router.put("/api/todo/:id", async (request, response) => {
   const { id } = request.params;
-  const { titre, description, statut, priorite, date_limite, assignation } = request.body;
-  try {
-      const todo = await updateTodo(parseInt(id),titre, description, statut, priorite, date_limite, assignation);
+  const { titre, description, statut_id, priorite_id, date_limite, assignation_id } = request.body;
+  if (isIDValid(id) && isTitreValid(titre) && isDescriptionValid(description) && isStatutValid(statut_id) && isPrioriteValid(priorite_id) && isDateLimiteValid(date_limite) && isAssignationValid(assignation_id)) {
+    try {
+      const todo = await updateTodo(parseInt(id),titre, description, parseInt(statut_id), parseInt(priorite_id), date_limite, parseInt(assignation_id));
       if (todo) {
           response
               .status(200)
@@ -93,32 +148,44 @@ router.put("/api/todo/:id", async (request, response) => {
       } else {
           response.status(404).json({ message: "Tâche non trouvée" });
       }
-  } catch (error) {
+    } catch (error) {
       response.status(400).json({ error: error.message });
+    }
+  } else {
+    response.status(400).json({error: "Valeur en parametre invalide"});
   }
 });
 
 //Route pour obtenir la liste des taches filtrer
 router.get("/api/filtretodos/", async (request, response) => {
   const {typeFilter} = request.body;
-  try {
-      const todos = await getFilterTodo(typeFilter);
-      response.status(200).json(todos);
-  } catch (error) {
-      response.status(400).json({ error: error.message });
+  if (isTypeFilterValid(typeFilter)) {
+    try {
+        const todos = await getFilterTodo(typeFilter);
+        response.status(200).json(todos);
+    } catch (error) {
+        response.status(400).json({ error: error.message });
+    }
+  } else {
+    response.status(400).json({error: "TypeFilter invalide"});
   }
 });
 
 //Route pour obtenir la liste des taches trier
 router.get("/api/sortedTodo/", async (request, response) => {
   const {sortBy, sort} = request.body;
-  try {
-      const todos = await getSortedTodos(sortBy,sort);
-      response.status(200).json(todos);
-  } catch (error) {
-      response.status(400).json({ error: error.message });
+  if (isSortByValid(sortBy) && isSortValid(sort)) {
+    try {
+        const todos = await getSortedTodos(sortBy,sort);
+        response.status(200).json(todos);
+    } catch (error) {
+        response.status(400).json({ error: error.message });
+    }
+  } else {
+    response.status(400).json({error: "Valeur en parametre invalide"});
   }
 });
+
 
 
 //Routes pour l'Affichage des détails d'une tache
@@ -148,5 +215,5 @@ router.get("/detail/:id", async (req, res) => {
   }
 });
 
-export default router;
 
+export default router;
