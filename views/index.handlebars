@@ -17,7 +17,7 @@
                     {{#each ../todos}}
                     {{#if (eq this.statut_id ../this.id)}}
                     <li>
-                    <p><a href="/details/{{this.id}}">{{this.titre}}</a></p>
+                    <p><a href="/details/{{this.id}}" class="detail-lien">{{this.titre}}</a></p>
                     <div class="priorite{{this.priorite.id}}"></div>
                     </li>
                     {{/if}}

@@ -1,66 +1,82 @@
 <header>
-    <h1>
-        Details
-    </h1>
-    <h1>
-        <a href="/">
-            <svg class="fermer" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path
-                    d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z" />
-            </svg>
-        </a>
-    </h1>
+  <h1>
+    Details
+  </h1>
+  <h1>
+    <a href="/">
+      <svg
+        class="fermer"
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z"
+        />
+      </svg>
+    </a>
+  </h1>
 </header>
 <main>
-    <div class="details-resume">
-        <div class="details-historique">
-            <div class="details">
-                <div class="detail-ligne">
-                    <p class="detail-key">Titre:</p>
-                    <p class="detail-value">{{todo.titre}}</p>
-                </div>
-                <div class="detail-ligne">
-                    <p class="detail-key">Description:</p>
-                    <p class="detail-value">{{todo.description}}</p>
-                </div>
-                <div class="detail-ligne">
-                    <p class="detail-key">Statut:</p>
-                    <p class="detail-value">{{todo.statut.nom}}</p>
-                </div>
-                <div class="detail-ligne">
-                    <p class="detail-key">Priorité:</p>
-                    <p class="detail-value">{{todo.priorite.nom}}</p>
-                </div>
-                <div class="detail-ligne">
-                    <p class="detail-key">Date de création:</p>
-                    <p class="detail-value">{{date todo.date_creation format="YYYY-MM-DDThh:mm:ss"}}</p>
-                </div>
-                <div class="detail-ligne">
-                    <p class="detail-key">Date limite:</p>
-                    <p class="detail-value">{{#if todo.date_limite}}{{date todo.date_limite format="YYYY-MM-DDThh:mm:ss"}}{{/if}}</p>
-                </div>
-                <div class="detail-ligne">
-                    <p class="detail-key">Assignation:</p>
-                    <p class="detail-value">{{todo.assignation.nom}}</p>
-                </div>
-            </div>
-            <div class="bar-separation">
-
-            </div>
-            <div class="historique">
-                <div class="historique-entete">Historique de la tâche</div>
-                    {{#each todo.changements}}
-                    <div class="historique-ligne">
-                        <p>[{{date this.date_creation format="YYYY-MM-DDThh:mm:ss"}}] {{this.par_user.nom}} ({{this.par_user.id}}): {{this.changement}}</p>
-                    </div>
-                    {{/each}}
-                <div class="historique-pied"><a href="/modifie_tache/{{todo.id}}">Modifier ou supprimer</a></div>
-            </div>
+  <div class="details-resume">
+    <div class="details-historique">
+      <div class="details">
+        <div class="detail-ligne">
+          <p class="detail-key">Titre:</p>
+          <p class="detail-value">{{todo.titre}}</p>
         </div>
-        <a href="/">
-            <div class="div-arrow">
-                &#8592;
-            </div>
-        </a>
+        <div class="detail-ligne">
+          <p class="detail-key">Description:</p>
+          <p class="detail-value">{{todo.description}}</p>
+        </div>
+        <div class="detail-ligne">
+          <p class="detail-key">Statut:</p>
+          <p class="detail-value">{{todo.statut.nom}}</p>
+        </div>
+        <div class="detail-ligne">
+          <p class="detail-key">Priorité:</p>
+          <p class="detail-value">{{todo.priorite.nom}}</p>
+        </div>
+        <div class="detail-ligne">
+          <p class="detail-key">Date de création:</p>
+          <p class="detail-value">{{date
+              todo.date_creation
+              format="YYYY-MM-DDThh:mm:ss"
+            }}</p>
+        </div>
+        <div class="detail-ligne">
+          <p class="detail-key">Date limite:</p>
+          <p class="detail-value">{{#if todo.date_limite}}{{date
+                todo.date_limite
+                format="YYYY-MM-DDThh:mm:ss"
+              }}{{/if}}</p>
+        </div>
+        <div class="detail-ligne">
+          <p class="detail-key">Assignation:</p>
+          <p class="detail-value">{{todo.assignation.nom}}</p>
+        </div>
+      </div>
+      <div class="bar-separation">
+
+      </div>
+      <div class="historique">
+        <div class="historique-entete">Historique de la tâche</div>
+        {{#each todo.changements}}
+          <div class="historique-ligne">
+            <p>[{{date this.date_creation format="YYYY-MM-DDThh:mm:ss"}}]
+              {{this.par_user.nom}}
+              ({{this.par_user.id}}):
+              {{this.changement}}</p>
+          </div>
+        {{/each}}
+        <div class="historique-pied"><a
+            href="/modifie_tache/{{todo.id}}"
+          >Modifier ou supprimer</a></div>
+      </div>
     </div>
+    <a href="/" class="div-arrow">
+      &#8592;
+    </a>
+  </div>
 </main>
