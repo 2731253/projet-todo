@@ -186,4 +186,34 @@ router.get("/api/sortedTodo/", async (request, response) => {
   }
 });
 
+
+
+//Routes pour l'Affichage des détails d'une tache
+router.get("/detail/:id", async (req, res) => {
+  try {
+    const todoId = req.params.id; // Récupérer l'ID de la tâche depuis l'URL
+    const todo = await prisma.task.findUnique({
+      where: { id: parseInt(todoId) }, // Rechercher la tâche par ID
+    });
+ 
+    if (!todo) {
+      return res.status(404).send("Tâche non trouvée");
+    }
+ 
+    // Rendre la page detailTache.hbs avec les données de la tâche
+    res.render("detailsTache", {
+      titre: todo.titre,
+      description: todo.description,
+      statut: todo.statut,
+      priorite: todo.priorite,
+      assignation: todo.assignation,
+      date_creation: todo.date_creation.toLocaleString(),
+      date_limite: todo.date_limite.toLocaleString(),
+    });
+  } catch (error) {
+    res.status(500).send("Erreur lors de la récupération des détails de la tâche");
+  }
+});
+
+
 export default router;
