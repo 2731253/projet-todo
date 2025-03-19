@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 // initialisation des statuts
 export const initialisation = async () => {
   const statuts = ["À faire", "En cours", "En révision", "Terminée"];
-  const priorites = ["Faible","Moyenne","Élevée"];
+  const priorites = ["Faible", "Moyenne", "Élevée"];
 
   for (const nom of statuts) {
     // Vérifier si le statut existe déjà
@@ -83,41 +83,41 @@ export const supprimerTodo = async (id) => {
  * @returns
  */
 export const ajoutTodo = async (titre, description, statut_id, priorite_id, date_creation, date_limite, assignation_id) => {
-    if (date_creation) {
-      date_creation = new Date(date_creation);
-    }
-    if (date_limite) {
-      date_limite = new Date(date_limite);
-    }
-    const todo = await prisma.todo.create({
-        data: {
-            titre,
-            description,
-            statut_id,
-            priorite_id,
-            date_creation,
-            date_limite,
-            assignation_id,
-        },
-    });
+  if (date_creation) {
+    date_creation = new Date(date_creation);
+  }
+  if (date_limite) {
+    date_limite = new Date(date_limite);
+  }
+  const todo = await prisma.todo.create({
+    data: {
+      titre,
+      description,
+      statut_id,
+      priorite_id,
+      date_creation,
+      date_limite,
+      assignation_id,
+    },
+  });
 
-    if (todo.date_creation) {
-      todo.date_creation = new Date(todo.date_creation).getTime();
+  if (todo.date_creation) {
+    todo.date_creation = new Date(todo.date_creation).getTime();
+  }
+  if (todo.date_limite) {
+    todo.date_limite = new Date(todo.date_limite).getTime();
+  }
+  const changement = "Ajout Todo: " + JSON.stringify(todo);
+  const par_user_id = 1;
+  const todo_id = todo.id;
+  await prisma.changement.create({
+    data: {
+      changement,
+      par_user_id,
+      todo_id,
     }
-    if (todo.date_limite) {
-      todo.date_limite = new Date(todo.date_limite).getTime();
-    }
-    const changement = "Ajout Todo: " + JSON.stringify(todo);
-    const par_user_id = 1;
-    const todo_id = todo.id;
-    await prisma.changement.create({
-      data: {
-        changement,
-        par_user_id,
-        todo_id,
-      }
-    });
-    return todo;
+  });
+  return todo;
 };
 
 /**
@@ -177,7 +177,7 @@ export const getUtilisateurs = async () => {
 export const getTodo = async (id) => {
   const todo = await prisma.todo.findUnique({
     where: {
-        id,
+      id,
     },
     include: {
       statut: true,
@@ -206,42 +206,42 @@ export const getTodo = async (id) => {
  * @param {*} id 
  * @returns la tâche mise a jour
  */
-export const updateTodo = async (id,titre, description, statut_id, priorite_id, date_limite, assignation_id) => {
-    if (date_limite) {
-      date_limite = new Date(date_limite)
+export const updateTodo = async (id, titre, description, statut_id, priorite_id, date_limite, assignation_id) => {
+  if (date_limite) {
+    date_limite = new Date(date_limite)
+  }
+  const todo = await prisma.todo.update({
+    where: {
+      id,
+    },
+    data: {
+      titre,
+      description,
+      statut_id,
+      priorite_id,
+      date_limite,
+      assignation_id,
+    },
+  });
+  if (todo) {
+    if (todo.date_creation) {
+      todo.date_creation = new Date(todo.date_creation).getTime();
     }
-    const todo = await prisma.todo.update({
-        where: {
-            id,
-        },
-        data: {
-            titre,
-            description,
-            statut_id,
-            priorite_id,
-            date_limite,
-            assignation_id,
-        },
+    if (todo.date_limite) {
+      todo.date_limite = new Date(todo.date_limite).getTime();
+    }
+    const changement = "Update Todo: " + JSON.stringify(todo);
+    const par_user_id = 1;
+    const todo_id = todo.id;
+    await prisma.changement.create({
+      data: {
+        changement,
+        par_user_id,
+        todo_id,
+      }
     });
-    if (todo) {
-      if (todo.date_creation) {
-        todo.date_creation = new Date(todo.date_creation).getTime();
-      }
-      if (todo.date_limite) {
-        todo.date_limite = new Date(todo.date_limite).getTime();
-      }
-      const changement = "Update Todo: " + JSON.stringify(todo);
-      const par_user_id = 1;
-      const todo_id = todo.id;
-      await prisma.changement.create({
-        data: {
-          changement,
-          par_user_id,
-          todo_id,
-        }
-      });
-    }
-    return todo;
+  }
+  return todo;
 };
 
 /**
@@ -251,7 +251,7 @@ export const updateTodo = async (id,titre, description, statut_id, priorite_id, 
 export const getFilterTodo = async (filterType) => {
   const todos = await prisma.todo.findMany({
     where: {
-      priorite_id:filterType,
+      priorite_id: filterType,
     },
     include: {
       priorite: true,
@@ -273,22 +273,39 @@ export const getFilterTodo = async (filterType) => {
  * Pour obtenir une liste des tache trier en fonction soit de la date de creation soit de la date finale(sortBy)
  * @returns la tâche
  */
-export const getSortedTodos = async (sortBy,sort) => {
+export const getSortedTodos = async (sortBy, sort) => {
   let todos;
-  if(sortBy === "date_limite" ){
+  if (sortBy === "date_limite") {
     todos = await prisma.todo.findMany({
       orderBy: {
-        date_limite: sort, 
+        date_limite: sort,
       },
-  });
-}
-else {
-  todos = await prisma.todo.findMany({
-    orderBy: {
-      date_creation: sort, 
-    },
-  });
-}
+      include: {
+        priorite: true,
+      }
+    }
+    );
+  }
+  else {
+    todos = await prisma.todo.findMany({
+      orderBy: {
+        date_creation: sort,
+      },
+      include: {
+        priorite: true,
+      }
+    }
+    );
+  }
+
+  todos.forEach(todo => {
+    if (todo.date_creation) {
+      todo.date_creation = new Date(todo.date_creation).getTime();
+    }
+    if (todo.date_limite) {
+      todo.date_limite = new Date(todo.date_limite).getTime();
+    }
+  })
 
   return todos;
 };
