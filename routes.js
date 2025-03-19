@@ -21,6 +21,22 @@ router.get("/", async (request, response) => {
   });
 });
 
+//Route pour afficher les taches par statuts
+router.get("/pageFiltrer/:id", async (request, response) => {
+  const { id } = request.params;
+  const statuts = await getStatuts();
+  const todos = await getFilterTodo(parseInt(id));
+  response.render("index", {
+      titre: "Accueil",
+      styles: ["/css/style.css"],
+      scripts: ["/js/main.js","/js/validation.js"],
+      todos: todos,
+      priorites: await getPriorites(),
+      statuts: statuts,
+      utilisateurs: await getUtilisateurs(),
+  });
+});
+
 //Route pour ajouter une tache
 router.get('/ajout_tache', async (request, response) => {
   response.render('ajout', {

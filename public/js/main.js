@@ -7,6 +7,7 @@ const todoStatut = document.getElementById("todo-statut-id");
 const todoPriorite = document.getElementById("todo-priorite-id");
 const todoDateLimite = document.getElementById("todo-date-limite");
 const todoAssignation = document.getElementById("todo-assignation-id");
+const boutonFlitrer = document.getElementById("bouton-filtrage");
 
 if (boutonSauvegarder) {
 boutonSauvegarder.addEventListener("click", async function (event) {
@@ -80,3 +81,29 @@ boutonSupprimer.addEventListener("click", async function () {
   }
 });
 }
+
+boutonFlitrer.addEventListener("mouseover", () => {
+  const menuFiltre = document.getElementById("menu-filtrage");
+  menuFiltre.style.display = "flex";
+})
+
+boutonFlitrer.addEventListener("mouseout", () => {
+  const menuFiltre = document.getElementById("menu-filtrage");
+  menuFiltre.style.display = "none";
+})
+
+document.getElementById("filtreFaible").addEventListener("click", ()=>{
+  window.location.href = "/pageFiltrer/1";
+})
+
+document.getElementById("filtreMoyen").addEventListener("click", ()=>{
+  window.location.href = "/pageFiltrer/2";
+})
+
+document.getElementById("filtreEleve").addEventListener("click", ()=>{
+  window.location.href = "/pageFiltrer/3";
+})
+
+document.getElementById("filtreDesactiver").addEventListener("click", ()=>{
+  window.location.href = "/";
+})

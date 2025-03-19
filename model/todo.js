@@ -253,7 +253,19 @@ export const getFilterTodo = async (filterType) => {
     where: {
       priorite_id:filterType,
     },
-});
+    include: {
+      priorite: true,
+    }
+  }
+  );
+  todos.forEach(todo => {
+    if (todo.date_creation) {
+      todo.date_creation = new Date(todo.date_creation).getTime();
+    }
+    if (todo.date_limite) {
+      todo.date_limite = new Date(todo.date_limite).getTime();
+    }
+  })
   return todos;
 };
 

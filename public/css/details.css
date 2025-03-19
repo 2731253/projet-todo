@@ -8,7 +8,7 @@
 }
 
 body{
-    background-color: var(--couleur-brun_pale)
+    background-color: var(--couleur-brun_pale);
 }
 header {
     background-color: var(--couleur-brun_fonce);
@@ -38,6 +38,11 @@ main{
     display: flex;
     flex-direction: column;
     align-items: left;
+}
+
+.details-resume a {
+    text-decoration: none;
+    color: var(--couleur-beige);
 }
 
 .details-historique{
