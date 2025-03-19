@@ -62,7 +62,32 @@ header .bouton-header:hover {
     padding: 10px;
 }
 
+
 .filtre-priorite{
+    color: var(--couleur-beige);
+    background-color: var(--couleur-brun_fonce);
+
+}
+
+#menu-trier{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    gap: 4px;
+    background-color: var(--couleur-brun_pale);
+    border: 1px solid var(--couleur-brun_fonce);
+    padding: 10px;
+}
+
+#menu-trier p{
+    margin: 4px;
+}
+
+.option-tri{
+    display: flex;
+}
+
+.tri-bouton{
     color: var(--couleur-beige);
     background-color: var(--couleur-brun_fonce);
 

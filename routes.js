@@ -13,7 +13,7 @@ router.get("/", async (request, response) => {
   response.render("index", {
       titre: "Accueil",
       styles: ["/css/style.css"],
-      scripts: ["/js/main.js","/js/validation.js"],
+      scripts: ["/js/main.js","/js/validation.js","/js/filtre-trie.js"],
       todos: todos,
       priorites: await getPriorites(),
       statuts: statuts,
@@ -21,7 +21,7 @@ router.get("/", async (request, response) => {
   });
 });
 
-//Route pour afficher les taches par statuts
+//Route pour afficher les taches filtré par priorité
 router.get("/pageFiltrer/:id", async (request, response) => {
   const { id } = request.params;
   const statuts = await getStatuts();
@@ -29,7 +29,23 @@ router.get("/pageFiltrer/:id", async (request, response) => {
   response.render("index", {
       titre: "Accueil",
       styles: ["/css/style.css"],
-      scripts: ["/js/main.js","/js/validation.js"],
+      scripts: ["/js/main.js","/js/validation.js","/js/filtre-trie.js"],
+      todos: todos,
+      priorites: await getPriorites(),
+      statuts: statuts,
+      utilisateurs: await getUtilisateurs(),
+  });
+});
+
+//Route pour afficher les taches trier par date
+router.get("/pageSort", async (request, response) => {
+  const {sortBy, sort} = request.query;
+  const statuts = await getStatuts();
+  const todos = await getSortedTodos(sortBy,sort);
+  response.render("index", {
+      titre: "Accueil",
+      styles: ["/css/style.css"],
+      scripts: ["/js/main.js","/js/validation.js","/js/filtre-trie.js"],
       todos: todos,
       priorites: await getPriorites(),
       statuts: statuts,
