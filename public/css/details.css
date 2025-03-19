@@ -37,7 +37,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: left;
-  max-width: 100vw;
 }
 
 .details-historique {
@@ -48,9 +47,6 @@ main {
 
 .details {
   background-color: var(--couleur-brun_fonce);
-  margin-left: 2rem;
-  max-width: 40%;
-  height: fit-content;
 }
 
 .detail-ligne {
@@ -59,7 +55,6 @@ main {
   justify-content: flex-start;
   gap: 0.5rem;
   padding: 0.5rem;
-  height: fit-content;
 }
 
 .detail-ligne .detail-key {
@@ -69,8 +64,6 @@ main {
 
 .detail-ligne .detail-value {
   margin: 0;
-  max-width: 15rem;
-  word-wrap: break-word;
 }
 
 .bar-separation {
@@ -81,7 +74,6 @@ main {
 .historique {
   background-color: var(--couleur-brun_pale);
   min-width: 11rem;
-  margin-right: 2rem;
 }
 
 .historique .historique-entete {
@@ -92,12 +84,11 @@ main {
 }
 
 .historique .historique-ligne {
-  height: fit-content;
+  height: 3rem;
   color: var(--couleur-brun_fonce);
   background-color: var(--couleur-beige);
   margin: 0.5rem 0;
   padding: 0.5rem;
-  word-wrap: break-word;
 }
 
 .historique .historique-ligne p {
@@ -111,16 +102,21 @@ main {
   border-radius: 0 0 10% 10%;
 }
 
-.div-arrow {
-  background-color: var(--couleur-brun_fonce);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 1.5rem;
-  width: 2.5rem;
-  border-radius: 10%;
+.historique-pied a {
+  text-decoration: none;
+  color: var(--couleur-beige);
 }
 
-.div-arrow .arrow {
+#pied-fleche {
+  text-decoration: none;
+}
+
+.div-arrow {
+  background-color: var(--couleur-brun_fonce);
   color: var(--couleur-beige);
+  text-decoration: none;
+  border-radius: 10%;
+  width: 5rem;
+  font-size: 3rem;
+  padding: 0 1rem;
 }
