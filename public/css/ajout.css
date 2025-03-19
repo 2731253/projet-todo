@@ -68,6 +68,7 @@ header .bouton-header:hover {
   align-items: center;
   margin: 0.5rem;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .form-group:first-child {
@@ -149,6 +150,12 @@ header .bouton-header:hover {
   text-decoration: none;
 }
 
-.vide {
-  display: none;
+.error-message {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+  position: absolute;
+  right: 1rem;
+  top: 3rem;
+  text-align: right;
 }
