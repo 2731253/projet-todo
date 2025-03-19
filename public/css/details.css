@@ -1,43 +1,44 @@
-:root{
-    --couleur-beige: #f1cda4;
-    --couleur-brun_pale: #bf976b;
-    --couleur-brun_fonce: #8a6d4d;
-    --couleur-vert: #776e18;
-    --couleur-jaune: #b88417;
-    --couleur-rouge:#842c2c;
+:root {
+  --couleur-beige: #f1cda4;
+  --couleur-brun_pale: #bf976b;
+  --couleur-brun_fonce: #8a6d4d;
+  --couleur-vert: #776e18;
+  --couleur-jaune: #b88417;
+  --couleur-rouge: #842c2c;
 }
 
 body{
     background-color: var(--couleur-brun_pale);
 }
+
 header {
-    background-color: var(--couleur-brun_fonce);
-    height: 2.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
+  background-color: var(--couleur-brun_fonce);
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header h1{
-    margin: 0;
-    padding: 0rem 1rem;
+header h1 {
+  margin: 0;
+  padding: 0rem 1rem;
 }
 
-header .fermer{
-    fill: var(--couleur-beige);
+header .fermer {
+  fill: var(--couleur-beige);
 }
 
-main{
-    display: flex;
-    justify-content: center;
-    padding: 2rem
+main {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
-.details-resume{
-    display: flex;
-    flex-direction: column;
-    align-items: left;
+.details-resume {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  max-width: 100vw;
 }
 
 .details-resume a {
@@ -51,80 +52,81 @@ main{
     margin: 3rem 0;
 }
 
-.details{
-    background-color: var(--couleur-brun_fonce);
-    
+.details {
+  background-color: var(--couleur-brun_fonce);
+  margin-left: 2rem;
+  max-width: 40%;
+  height: fit-content;
 }
 
-.detail-ligne{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    
+.detail-ligne {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  height: fit-content;
 }
 
-.detail-ligne .detail-key{
-    min-width: 6.5rem;
-    margin: 0;
+.detail-ligne .detail-key {
+  min-width: 6.5rem;
+  margin: 0;
 }
 
-.detail-ligne .detail-value{
-    margin: 0;
+.detail-ligne .detail-value {
+  margin: 0;
+  max-width: 15rem;
+  word-wrap: break-word;
 }
 
-.bar-separation{
-    border-radius: 19%;
-    border: 2px solid var(--couleur-beige);
-
+.bar-separation {
+  border-radius: 19%;
+  border: 2px solid var(--couleur-beige);
 }
 
-.historique{
-    background-color: var(--couleur-brun_pale);
-    min-width: 11rem;
+.historique {
+  background-color: var(--couleur-brun_pale);
+  min-width: 11rem;
+  margin-right: 2rem;
 }
 
-.historique .historique-entete{
-    background-color: var(--couleur-brun_fonce);
-    text-align: center;
-    padding: 0.5rem;
-    border-radius: 10% 10% 0 0;
-
+.historique .historique-entete {
+  background-color: var(--couleur-brun_fonce);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 10% 10% 0 0;
 }
 
-.historique .historique-ligne{
-    height: 3rem;
-    color: var(--couleur-brun_fonce);
-    background-color: var(--couleur-beige);
-    margin: 0.5rem 0;
-    padding: 0.5rem;
+.historique .historique-ligne {
+  height: fit-content;
+  color: var(--couleur-brun_fonce);
+  background-color: var(--couleur-beige);
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  word-wrap: break-word;
 }
 
-.historique .historique-ligne p{
-    margin: 0;
+.historique .historique-ligne p {
+  margin: 0;
 }
 
-.historique .historique-pied{
-    background-color: var(--couleur-brun_fonce);
-    text-align: center;
-    padding: 0.5rem;
-    border-radius: 0 0 10% 10%;
+.historique .historique-pied {
+  background-color: var(--couleur-brun_fonce);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0 0 10% 10%;
 }
 
-.div-arrow{
-    background-color: var(--couleur-brun_fonce);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 1.5rem;
-    width: 2.5rem;
-    border-radius: 10%;
+.div-arrow {
+  background-color: var(--couleur-brun_fonce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  width: 2.5rem;
+  border-radius: 10%;
 }
-
 
 .div-arrow .arrow{
     color: var(--couleur-beige);
-    
 }
-
