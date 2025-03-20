@@ -103,7 +103,7 @@ header .bouton-header:hover {
 
 .colonne-tache {
     background-color: var(--couleur-brun_pale);
-    min-width: 10rem;
+    width: 25vw;
     border-radius: 10%;
 }
 

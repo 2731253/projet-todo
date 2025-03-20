@@ -5,6 +5,9 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 function formatDate(date) {
+  if (date == null) {
+    return "";
+  }
   const d = new Date(date);
   return d.toLocaleDateString("fr-FR");
 }
