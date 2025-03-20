@@ -19,11 +19,12 @@ html {
 }
 
 body {
-  margin: 0;
-  background-color: var(--couleur-beige);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    margin: 0;
+    background-color: var(--couleur-beige);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 50rem;
 }
 
 header {
@@ -51,6 +52,47 @@ header .bouton-header:hover {
   color: var(--couleur-beige);
 }
 
+.menu-filtre {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--couleur-brun_pale);
+    border: 1px solid var(--couleur-brun_fonce);
+    padding: 10px;
+}
+
+
+.filtre-priorite{
+    color: var(--couleur-beige);
+    background-color: var(--couleur-brun_fonce);
+
+}
+
+#menu-trier{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    gap: 4px;
+    background-color: var(--couleur-brun_pale);
+    border: 1px solid var(--couleur-brun_fonce);
+    padding: 10px;
+}
+
+#menu-trier p{
+    margin: 4px;
+}
+
+.option-tri{
+    display: flex;
+}
+
+.tri-bouton{
+    color: var(--couleur-beige);
+    background-color: var(--couleur-brun_fonce);
+
+}
+
 #conteneur-tache {
   padding: 2rem;
   display: flex;
@@ -60,9 +102,14 @@ header .bouton-header:hover {
 }
 
 .colonne-tache {
-  background-color: var(--couleur-brun_pale);
-  width: 25vw;
-  border-radius: 10%;
+    background-color: var(--couleur-brun_pale);
+    min-width: 10rem;
+    border-radius: 10%;
+}
+
+.colonne-tache a {
+    text-decoration: none;
+    color: var(--couleur-brun_fonce);
 }
 
 .colonne-tache .entete-tache {
@@ -78,10 +125,11 @@ header .bouton-header:hover {
 }
 
 .colonne-tache ul {
-  list-style-type: none;
-  margin: 0px;
-  padding: 0px;
-  background-color: var(--couleur-brun_pale);
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--couleur-brun_pale);
+    min-height: 5vh;
 }
 
 .colonne-tache li {

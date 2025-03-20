@@ -7,9 +7,10 @@
   --couleur-rouge: #842c2c;
 }
 
-body {
-  background-color: var(--couleur-brun_pale);
+body{
+    background-color: var(--couleur-brun_pale);
 }
+
 header {
   background-color: var(--couleur-brun_fonce);
   height: 2.5rem;
@@ -39,10 +40,15 @@ main {
   align-items: left;
 }
 
-.details-historique {
-  display: flex;
-  gap: 1.5rem;
-  margin: 3rem 0;
+.details-resume a {
+    text-decoration: none;
+    color: var(--couleur-beige);
+}
+
+.details-historique{
+    display: flex;
+    gap: 1.5rem;
+    margin: 3rem 0;
 }
 
 .details {
@@ -102,9 +108,24 @@ main {
   border-radius: 0 0 10% 10%;
 }
 
+.div-arrow {
+  background-color: var(--couleur-brun_fonce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  width: 2.5rem;
+  border-radius: 10%;
+}
+
+.div-arrow .arrow{
+    color: var(--couleur-beige);
+}
+
 .historique-pied a {
   text-decoration: none;
   color: var(--couleur-beige);
+
 }
 
 #pied-fleche {

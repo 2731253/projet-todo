@@ -55,13 +55,13 @@ export const isAssignationValid = (assignation_id) => {
 export const isSortByValid = (sortBy) => {
     sortBy = parseInt(sortBy);
     return sortBy &&
-    typeof sortBy === "number";
+    typeof sortBy === "string";
 }
 
 export const isSortValid = (sort) => {
     sort = parseInt(sort);
     return sort &&
-    typeof sort === "number";
+    typeof sort === "string";
 }
 
 export const isTypeFilterValid = (typeFilter) => {

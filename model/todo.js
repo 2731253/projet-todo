@@ -148,6 +148,7 @@ export const ajoutTodo = async (
       changement,
       par_user_id,
       todo_id,
+
     },
   });
   return todo;
@@ -237,6 +238,7 @@ export const getTodo = async (id) => {
  * @param {*} id
  * @returns la tâche mise a jour
  */
+
 export const updateTodo = async (
   id,
   titre,
@@ -269,7 +271,6 @@ export const updateTodo = async (
     if (todo.date_limite) {
       todo.date_limite = new Date(todo.date_limite).getTime();
     }
-
     const nouvelleDateCreation = formatDate(todo.date_creation);
     const nouvelleDateLimite = formatDate(todo.date_limite);
 
@@ -294,17 +295,27 @@ export const updateTodo = async (
 };
 
 /**
- * Pour obtenir une tâche par son filterType
- * quand on aura la table pour les priorité on pourra rechercher avec l'id de la priorite
- * grace au jointure
+ * Pour obtenir une tâche par son filterType qui est l'Id dans la table priorite
  * @returns la tâche
  */
 export const getFilterTodo = async (filterType) => {
   const todos = await prisma.todo.findMany({
     where: {
-      priorite: filterType,
+      priorite_id: filterType,
     },
-  });
+    include: {
+      priorite: true,
+    }
+  }
+  );
+  todos.forEach(todo => {
+    if (todo.date_creation) {
+      todo.date_creation = new Date(todo.date_creation).getTime();
+    }
+    if (todo.date_limite) {
+      todo.date_limite = new Date(todo.date_limite).getTime();
+    }
+  })
   return todos;
 };
 
@@ -319,14 +330,32 @@ export const getSortedTodos = async (sortBy, sort) => {
       orderBy: {
         date_limite: sort,
       },
-    });
-  } else {
+      include: {
+        priorite: true,
+      }
+    }
+    );
+  }
+  else {
     todos = await prisma.todo.findMany({
       orderBy: {
         date_creation: sort,
       },
-    });
+      include: {
+        priorite: true,
+      }
+    }
+    );
   }
+
+  todos.forEach(todo => {
+    if (todo.date_creation) {
+      todo.date_creation = new Date(todo.date_creation).getTime();
+    }
+    if (todo.date_limite) {
+      todo.date_limite = new Date(todo.date_limite).getTime();
+    }
+  })
 
   return todos;
 };
