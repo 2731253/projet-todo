@@ -129,12 +129,8 @@ export const ajoutTodo = async (
     },
   });
 
-  if (todo.date_creation) {
-    todo.date_creation = new Date(todo.date_creation).getTime();
-  }
-  if (todo.date_limite) {
-    todo.date_limite = new Date(todo.date_limite).getTime();
-  }
+
+  ConversionDate(todo);
   const nouvelleDateCreation = formatDate(todo.date_creation);
   const nouvelleDateLimite = formatDate(todo.date_limite);
   const changement = `Ajout de ${todo.titre}, Description: ${
@@ -168,12 +164,7 @@ export const getTodos = async () => {
     },
   });
   todos.forEach((todo) => {
-    if (todo.date_creation) {
-      todo.date_creation = new Date(todo.date_creation).getTime();
-    }
-    if (todo.date_limite) {
-      todo.date_limite = new Date(todo.date_limite).getTime();
-    }
+    ConversionDate(todo);
   });
   return todos;
 };
@@ -226,13 +217,8 @@ export const getTodo = async (id) => {
     },
   });
   if (todo) {
-    if (todo.date_creation) {
-      todo.date_creation = new Date(todo.date_creation).getTime();
-    }
-    if (todo.date_limite) {
-      todo.date_limite = new Date(todo.date_limite).getTime();
-    }
-  }
+  ConversionDate(todo);
+  };
   return todo;
 };
 
@@ -268,12 +254,7 @@ export const updateTodo = async (
     },
   });
   if (todo) {
-    if (todo.date_creation) {
-      todo.date_creation = new Date(todo.date_creation).getTime();
-    }
-    if (todo.date_limite) {
-      todo.date_limite = new Date(todo.date_limite).getTime();
-    }
+    ConversionDate(todo);
     const nouvelleDateCreation = formatDate(todo.date_creation);
     const nouvelleDateLimite = formatDate(todo.date_limite);
 
@@ -312,12 +293,7 @@ export const getFilterTodo = async (filterType) => {
   }
   );
   todos.forEach(todo => {
-    if (todo.date_creation) {
-      todo.date_creation = new Date(todo.date_creation).getTime();
-    }
-    if (todo.date_limite) {
-      todo.date_limite = new Date(todo.date_limite).getTime();
-    }
+    ConversionDate(todo);
   })
   return todos;
 };
@@ -352,13 +328,19 @@ export const getSortedTodos = async (sortBy, sort) => {
   }
 
   todos.forEach(todo => {
+    ConversionDate(todo);
+  })
+
+  return todos;
+};
+
+const ConversionDate =(todo) => {
+  
     if (todo.date_creation) {
       todo.date_creation = new Date(todo.date_creation).getTime();
     }
     if (todo.date_limite) {
       todo.date_limite = new Date(todo.date_limite).getTime();
     }
-  })
-
-  return todos;
+  
 };
