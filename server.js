@@ -12,6 +12,8 @@ import compression from "compression";
 import cors from "cors";
 import cspOption from "./csp-options.js";
 import handlebarsHelpers from 'handlebars-helpers';  // Import handlebars-helpers
+import session from 'express-session';
+import memorystore from 'memorystore';
 
 // Ajout de helpers eq et date a handlebars
 const handlebars = engine({
@@ -23,6 +25,8 @@ const handlebars = engine({
 // Création du serveur express
 const app = express();
 
+const MemoryStore = memorystore(session);
+
 app.engine("handlebars", handlebars); //Pour informer express que l'on utilise handlebars
 app.set("view engine", "handlebars"); //Pour dire a express que le moteur de rendu est handlebars
 app.set("views", "./views"); //Pour dire a express ou se trouvent les vues
@@ -32,6 +36,16 @@ app.use(helmet(cspOption));
 app.use(compression());
 app.use(cors());
 app.use(json());
+
+// middleware pour la session
+app.use(session({
+    cookie: { maxAge: 3600000 },
+    name: process.env.npm_package_name,
+    store: new MemoryStore({ checkPeriod: 3600000 }),
+    resave: false,
+    saveUninitialized: false,
+    secret: process.env.SESSION_SECRET
+}));
 
 //Middeleware integre a express pour gerer la partie static du serveur
 //le dossier 'public' est la partie statique de notre serveur
