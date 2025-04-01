@@ -8,6 +8,9 @@ const router = Router();
 
 //Route pour afficher les taches par statuts
 router.get("/", async (request, response) => {
+  if (!request.session.id_user) { // verifier si un user est deja connecter
+    request.session.id_user = 123;
+  }
   const statuts = await getStatuts();
   const todos = await getTodos();
   response.render("index", {
