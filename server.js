@@ -14,6 +14,8 @@ import cspOption from "./csp-options.js";
 import handlebarsHelpers from 'handlebars-helpers';  // Import handlebars-helpers
 import session from 'express-session';
 import memorystore from 'memorystore';
+import passport from 'passport';
+import "./authentification.js";
 
 // Ajout de helpers eq et date a handlebars
 const handlebars = engine({
@@ -46,6 +48,9 @@ app.use(session({
     saveUninitialized: false,
     secret: process.env.SESSION_SECRET
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Middeleware integre a express pour gerer la partie static du serveur
 //le dossier 'public' est la partie statique de notre serveur

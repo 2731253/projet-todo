@@ -1,10 +1,27 @@
 import { Router } from "express";
 import { supprimerTodo, ajoutTodo, getTodo, getTodos, updateTodo, getFilterTodo, getSortedTodos, getPriorites, getStatuts, getUtilisateurs } from "./model/todo.js";
-import { isIDValid, isTitreValid, isDescriptionValid, isStatutValid, isPrioriteValid, isDateCreationValid, isDateLimiteValid, isAssignationValid, isSortByValid, isSortValid, isTypeFilterValid} from "./validation.js";
+import { isIDValid, isTitreValid, isDescriptionValid, isStatutValid, isPrioriteValid, isDateCreationValid, isDateLimiteValid, isAssignationValid, isSortByValid, isSortValid, isTypeFilterValid, isEmailValid, isNomValid, isPasswordValid} from "./validation.js";
 
 const router = Router();
 
 //Definition des routes
+
+//Route pour ajouter un utilisateur (authentification)
+router.post("inscription", async (request, response) => {
+  const { email, password, nom } = request.body; 
+  if (isEmailValid(email) && isPasswordValid(password) && isNomValid(nom)) {
+      try {
+          const user = await addUser(email, password, nom);
+          response
+              .status(200)
+              .json({ user, message: "Utilisateur ajouté avec succès" });
+      } catch (error) {
+          response.status(400).json({ error: error.message });
+      }
+  } else {
+      response.status(400).json({ error: "Email, Password et/ou Nom invalide" });
+  }
+});
 
 //Route pour afficher les taches par statuts
 router.get("/", async (request, response) => {
