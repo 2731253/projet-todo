@@ -81,7 +81,7 @@ export const isPasswordValid = (password) =>
     password &&
     typeof password === "string" &&
     password.length >= 8 &&
-    password.length <= 50;
+    password.length <= 16;
 
 export const isNomValid = (nom) =>
     nom &&
