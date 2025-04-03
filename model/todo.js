@@ -62,8 +62,11 @@ export const initialisation = async () => {
   const nombre_utilisateurs = await prisma.user.count();
   if (nombre_utilisateurs === 0) {
     const nom = "Etudiant";
+    const email = "etudiant@email.com";
+    const password = "password";
+    const type = "user";
     await prisma.user.create({
-      data: { nom },
+      data: { nom, email, password, type },
     });
     console.log(`Utilisateur ajouté : ${nom}`);
   }

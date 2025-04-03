@@ -69,3 +69,22 @@ export const isTypeFilterValid = (typeFilter) => {
     return typeFilter &&
     typeof typeFilter === "number";
 }
+
+export const isEmailValid = (email) =>
+    email &&
+    typeof email === "string" &&
+    email.length >= 5 &&
+    email.length <= 50 &&
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+export const isPasswordValid = (password) =>
+    password &&
+    typeof password === "string" &&
+    password.length >= 8 &&
+    password.length <= 50;
+
+export const isNomValid = (nom) =>
+    nom &&
+    typeof nom === "string" &&
+    nom.length >= 3 &&
+    nom.length <= 20;
