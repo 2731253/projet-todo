@@ -1,7 +1,9 @@
 :root {
-  --couleur-beige: #f1cda4;
+  --couleur-beige: #fff7ee;
   --couleur-brun_pale: #bf976b;
   --couleur-brun_fonce: #8a6d4d;
+  --couleur-brun_foncer: #533e28;
+  --couleur-blanche: #fff;
   --couleur-vert: #776e18;
   --couleur-jaune: #b88417;
   --couleur-rouge: #842c2c;
@@ -20,7 +22,7 @@ html {
 
 body {
     margin: 0;
-    background-color: var(--couleur-beige);
+    background-color: var(--couleur-blanche);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -102,7 +104,7 @@ header .bouton-header:hover {
 }
 
 .colonne-tache {
-    background-color: var(--couleur-brun_pale);
+    background-color: var(--couleur-beige);
     width: 25vw;
     border-radius: 10%;
 }
@@ -114,21 +116,21 @@ header .bouton-header:hover {
 
 .colonne-tache .entete-tache {
   background-color: var(--couleur-brun_fonce);
-  color: var(--couleur-brun_pale);
+  color: var( --couleur-blanche);
   display: flex;
   width: 100%;
   height: 2.5rem;
   border-radius: 0.5rem 0.5rem 0 0;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .colonne-tache ul {
     list-style-type: none;
     margin: 0px;
     padding: 0px;
-    background-color: var(--couleur-brun_pale);
+    background-color: var(--couleur-beige);
     min-height: 5vh;
 }
 
@@ -145,26 +147,26 @@ header .bouton-header:hover {
 
 .colonne-tache p {
   color: var(--couleur-brun_fonce);
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .colonne-tache .priorite1 {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
   background-color: var(--couleur-vert);
 }
 
 .colonne-tache .priorite2 {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
   background-color: var(--couleur-jaune);
 }
 
 .colonne-tache .priorite3 {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 1rem;
+  width: 1rem;
   border-radius: 50%;
   background-color: var(--couleur-rouge);
 }
@@ -177,10 +179,10 @@ header .bouton-header:hover {
 }
 
 .bas-tache .ajouter-tache {
-  color: var(--couleur-brun_pale);
+  color: var( --couleur-blanche);
   border: none;
   background-color: transparent;
-  font-size: 2rem;
+  font-size: 1rem;
   cursor: pointer;
   text-decoration: none;
   font-weight: 900;
@@ -188,11 +190,11 @@ header .bouton-header:hover {
 }
 
 .ajouter-tache:hover {
-  color: #b79067;
+  color: #533e28;
 }
 
 .ajouter-tache:active {
-  color: #9d7c58;
+  color: #533e28;
 }
 
 main {

@@ -1,6 +1,7 @@
 :root {
-  --couleur-beige: #f1cda4;
+  --couleur-blanche: #fff;
   --couleur-brun_pale: #bf976b;
+  --couleur-beige: #fff7ee;
   --couleur-brun_fonce: #8a6d4d;
   --couleur-vert: #776e18;
   --couleur-jaune: #b88417;
@@ -8,12 +9,12 @@
 }
 
 body{
-    background-color: var(--couleur-brun_pale);
+    background-color: var(--couleur-blanche);
 }
 
 header {
   background-color: var(--couleur-brun_fonce);
-  height: 2.5rem;
+  height: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,12 +43,12 @@ main {
 
 .details-resume a {
     text-decoration: none;
-    color: var(--couleur-beige);
+    color: var(--couleur-blanche);
 }
 
 .details-historique{
     display: flex;
-    gap: 1.5rem;
+    gap: 1rem;
     margin: 3rem 0;
 }
 
@@ -64,7 +65,7 @@ main {
 }
 
 .detail-ligne .detail-key {
-  min-width: 6.5rem;
+  min-width: 3rem;
   margin: 0;
 }
 
@@ -78,7 +79,7 @@ main {
 }
 
 .historique {
-  background-color: var(--couleur-brun_pale);
+  background-color: var(--couleur-beige);
   min-width: 11rem;
 }
 
@@ -114,12 +115,12 @@ main {
   align-items: center;
   justify-content: center;
   height: 2rem;
-  width: 2.5rem;
+  width: 1.5rem;
   border-radius: 10%;
 }
 
 .div-arrow .arrow{
-    color: var(--couleur-beige);
+    color: var(--couleur-blanche);
 }
 
 .historique-pied a {
@@ -137,7 +138,7 @@ main {
   color: var(--couleur-beige);
   text-decoration: none;
   border-radius: 10%;
-  width: 5rem;
-  font-size: 3rem;
+  width: 3rem;
+  font-size: 1.5rem;
   padding: 0 1rem;
 }
