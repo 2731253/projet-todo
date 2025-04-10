@@ -28,6 +28,7 @@ import {
     isPasswordValid,
 } from "./validation.js";
 import passport from "passport";
+import { addUser } from "./model/user.js";
 
 const router = Router();
 
@@ -40,8 +41,7 @@ router.post("/connexion", (request, response, next) => {
         isPasswordValid(request.body.password)
     ) {
         passport.authenticate("local", (error, user, info) => {
-            console.log(user);
-            console.log(info);
+            console.log("bob", user);
             if (error) {
                 next(error);
             } else if (!user) {
@@ -51,7 +51,9 @@ router.post("/connexion", (request, response, next) => {
                     if (error) {
                         next(error);
                     }
-
+                    if (!request.session.user) {
+                        request.session.user = user;
+                    }
                     response.status(200).json({
                         message: "Connexion réussie",
                         user,
@@ -76,8 +78,10 @@ router.post("/deconnexion", (request, response) => {
         if (error) {
             next(error);
         }
-        response.redirect("/");
+        console.log("oui");
     });
+
+    response.redirect("/");
 });
 
 //Route pour ajouter un utilisateur (authentification)

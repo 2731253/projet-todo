@@ -8,6 +8,7 @@ const todoPriorite = document.getElementById("todo-priorite-id");
 const todoDateLimite = document.getElementById("todo-date-limite");
 const todoAssignation = document.getElementById("todo-assignation-id");
 const boutonConnexion = document.getElementById("bouton-connexion");
+const boutonDeconnexion = document.getElementById("bouton-deconnexion");
 
 import { validate } from "./validation.js";
 

@@ -11,7 +11,8 @@
     flex-direction: column;
 }
 
-#connexion-erreur {
+#connexion-erreur,
+#inscription-erreur {
     white-space: pre-line;
 }
 

@@ -40,8 +40,6 @@ passport.use(
 
 // Configuration de la sérialisation
 passport.serializeUser((user, done) => {
-    // On met uniquement le courriel dans la session
-    console.log("user after serialize", user);
     done(null, user.email);
 });
 
@@ -50,7 +48,6 @@ passport.deserializeUser(async (email, done) => {
     // S'il y a une erreur de base de donnée, on retourne l'erreur au serveur
     try {
         const user = await getUserByEmail(email);
-        console.log("user after deserialize", user);
         done(null, user);
     } catch (error) {
         done(error);
