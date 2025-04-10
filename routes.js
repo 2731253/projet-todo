@@ -27,6 +27,7 @@ import {
     isNomValid,
     isPasswordValid,
 } from "./validation.js";
+import passport from "passport";
 
 const router = Router();
 
@@ -38,15 +39,17 @@ router.post("/connexion", (request, response, next) => {
         isEmailValid(request.body.email) &&
         isPasswordValid(request.body.password)
     ) {
-        passport.authenticate("local", (erreur, user, info) => {
-            if (erreur) {
-                next(erreur);
+        passport.authenticate("local", (error, user, info) => {
+            console.log(user);
+            console.log(info);
+            if (error) {
+                next(error);
             } else if (!user) {
                 response.status(401).json(info);
             } else {
-                request.logIn(user, (erreur) => {
-                    if (erreur) {
-                        next(erreur);
+                request.logIn(user, (error) => {
+                    if (error) {
+                        next(error);
                     }
 
                     response.status(200).json({
@@ -63,8 +66,22 @@ router.post("/connexion", (request, response, next) => {
     }
 });
 
+//Route deconnexion
+router.post("/deconnexion", (request, response) => {
+    if (!request.session.user) {
+        response.status(401).end();
+        return;
+    }
+    request.logOut((error) => {
+        if (error) {
+            next(error);
+        }
+        response.redirect("/");
+    });
+});
+
 //Route pour ajouter un utilisateur (authentification)
-router.post("inscription", async (request, response) => {
+router.post("/inscription", async (request, response) => {
     const { email, password, nom } = request.body;
     if (isEmailValid(email) && isPasswordValid(password) && isNomValid(nom)) {
         try {
@@ -98,6 +115,14 @@ router.get("/", async (request, response) => {
         priorites: await getPriorites(),
         statuts: statuts,
         utilisateurs: await getUtilisateurs(),
+    });
+});
+
+router.get("/connexion", (request, response) => {
+    response.render("connexion", {
+        titre: "Connexion",
+        styles: ["css/connexion.css"],
+        scripts: ["./js/connexion.js", "/js/main.js", "/js/validation.js"],
     });
 });
 

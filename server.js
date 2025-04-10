@@ -11,17 +11,17 @@ import helmet from "helmet";
 import compression from "compression";
 import cors from "cors";
 import cspOption from "./csp-options.js";
-import handlebarsHelpers from 'handlebars-helpers';  // Import handlebars-helpers
-import session from 'express-session';
-import memorystore from 'memorystore';
-import passport from 'passport';
+import handlebarsHelpers from "handlebars-helpers"; // Import handlebars-helpers
+import session from "express-session";
+import memorystore from "memorystore";
+import passport from "passport";
 import "./authentification.js";
 
 // Ajout de helpers eq et date a handlebars
 const handlebars = engine({
     helpers: {
-        ...handlebarsHelpers()
-    }
+        ...handlebarsHelpers(),
+    },
 });
 
 // Création du serveur express
@@ -40,14 +40,16 @@ app.use(cors());
 app.use(json());
 
 // middleware pour la session
-app.use(session({
-    cookie: { maxAge: 3600000 },
-    name: process.env.npm_package_name,
-    store: new MemoryStore({ checkPeriod: 3600000 }),
-    resave: false,
-    saveUninitialized: false,
-    secret: process.env.SESSION_SECRET
-}));
+app.use(
+    session({
+        cookie: { maxAge: 3600000 },
+        name: process.env.npm_package_name,
+        store: new MemoryStore({ checkPeriod: 3600000 }),
+        resave: false,
+        saveUninitialized: false,
+        secret: process.env.SESSION_SECRET,
+    })
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -61,8 +63,8 @@ app.use(routerExterne);
 
 // Renvoyer une erreur 404 pour les routes non définies
 app.use((request, response) => {
- // Renvoyer simplement une chaîne de caractère indiquant que la page n'existe pas
- response.status(404).send(`${request.originalUrl} Route introuvable.`);
+    // Renvoyer simplement une chaîne de caractère indiquant que la page n'existe pas
+    response.status(404).send(`${request.originalUrl} Route introuvable.`);
 });
 
 //Démarrage du serveur

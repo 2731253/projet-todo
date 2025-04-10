@@ -36,6 +36,9 @@
         </label>
         <input class="bouton-header" type="button" value="Historique">
         <input class="bouton-header" type="button" value="Utilisateur">
+        {{#unless user}}
+            <input class="bouton-header" id="bouton-connexion" type="button" value="Connexion">
+        {{/unless}}
     </nav>
 </header>
 <main>
