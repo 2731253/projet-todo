@@ -1,0 +1,25 @@
+.form-authentification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.form-authentification label {
+    display: flex;
+    flex-direction: column;
+}
+
+#connexion-erreur,
+#inscription-erreur {
+    white-space: pre-line;
+}
+
+#connexion-retour {
+    background-color: lightgray;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 1rem;
+    color: black;
+}

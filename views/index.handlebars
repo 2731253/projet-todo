@@ -33,6 +33,15 @@
         </label>
         <input class="bouton-header" type="button" value="Historique">
         <input class="bouton-header" type="button" value="Utilisateur">
+
+        <input class="bouton-header" id="bouton-connexion" type="button" value="Connexion">
+
+        {{#if user}}
+        <form method="post" class="bouton-deconnexion"  action="/deconnexion">
+            <input type="submit" id="bouton-deconnexion" class="bouton-header" value="Deconnexion" />
+        </form>
+        {{/if}}
+
     </nav>
 </header>
 <main>
