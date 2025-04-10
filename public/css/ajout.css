@@ -1,7 +1,10 @@
 :root {
-  --couleur-beige: #f1cda4;
+  --couleur-beige: #fff7ee;
+  --couleur-blanche: #fff;
   --couleur-brun_pale: #bf976b;
   --couleur-brun_fonce: #8a6d4d;
+  --couleur-brun_foncer: #533e28;
+  --couleur-noir: #000;
   --couleur-vert: #776e18;
   --couleur-jaune: #b88417;
   --couleur-rouge: #842c2c;
@@ -19,7 +22,7 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--couleur-beige);
+  background-color: var(--couleur-blanche);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -33,7 +36,7 @@ header {
 }
 
 header .bouton-header {
-  background-color: var(--couleur-brun_fonce);
+  background-color: var(--couleur-fonce);
   color: var(--couleur-beige);
   border: none;
   height: 100%;
@@ -60,7 +63,7 @@ header .bouton-header:hover {
   background-color: var(--couleur-brun_fonce);
   /* padding: 1rem; */
   border-radius: 5px;
-  color: var(--couleur-beige);
+  color: var(--couleur-blanche);
 }
 
 .form-group {
@@ -92,7 +95,7 @@ header .bouton-header:hover {
   flex: 1;
   padding: 0.5rem;
   width: 100%;
-  color: var(--couleur-beige);
+  color: var(--couleur-brun_fonce);
   font-size: 1rem;
   min-width: 12rem;
   margin-top: 1rem;
@@ -107,12 +110,12 @@ header .bouton-header:hover {
 
 #todo-background {
   padding-top: 2rem;
-  background-color: var(--couleur-beige);
+  background-color: var(--couleur-blanche);
 }
 
 .bouton {
   background-color: var(--couleur-brun_fonce);
-  color: var(--couleur-beige);
+  color: var(--couleur-blanche);
   border: none;
   border-radius: 5px;
   padding: 1rem;
@@ -121,11 +124,11 @@ header .bouton-header:hover {
 }
 
 .bouton:hover {
-  background-color: var(--couleur-brun_fonce);
+  background-color: var(--couleur-brun_foncer);
 }
 
 .bouton:active {
-  background-color: #765d42;
+  background-color: --couleur-brun_fonce;
 }
 
 #ajout-todo-form button {
@@ -145,7 +148,7 @@ header .bouton-header:hover {
 }
 
 #bouton-retour {
-  font-size: 3rem;
+  font-size: 2rem;
   padding-bottom: 5px;
   text-decoration: none;
 }
@@ -157,5 +160,5 @@ header .bouton-header:hover {
   position: absolute;
   right: 1rem;
   top: 3rem;
-  text-align: right;
+  text-align: rigth;
 }
