@@ -83,13 +83,12 @@ header form,
 
 .filtre-priorite{
     color: var(--couleur-brun_fonce);
-    padding: 10px;
+    padding: 0.5rem;
     text-align: center;
 }
 
 .filtre-priorite:hover{
   background-color:#aaa;
-  padding: 10px;
 }
 
 #menu-trier{
@@ -99,13 +98,17 @@ header form,
   position: absolute;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: #fff;
-  border: 1px solid var(--couleur-brun_fonce);
+  
 }
 
 .sous-menu-trier{
   display: flex;
+  position: relative;
   flex-direction: column;
+  left: 10px;
+  background-color: #fff;
+  border: 1px solid var(--couleur-brun_fonce);
+  left: 4.25rem;
 }
 
 .sous-menu-trier span{
@@ -113,17 +116,13 @@ header form,
   justify-content: space-between;
 }
 
-#menu-trier p{
-    padding: 3px;
-}
-
 .option-tri{
-  padding: 10px;
+  padding: .5rem;
 }
 
 .option-tri:hover{
   background-color:#aaa;
-  padding: 10px;
+  padding: .5rem;
 }
 
 #conteneur-tache {
