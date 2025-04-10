@@ -78,7 +78,6 @@ if (process.env.NODE_ENV === "development") {
         key: await readFile("./security/localhost.key"),
         cert: await readFile("./security/localhost.cert"),
     };
-
     https.createServer(credentials, app).listen(process.env.PORT);
     console.info("Serveur démarré avec succès: ");
     console.log("https://localhost:" + process.env.PORT);

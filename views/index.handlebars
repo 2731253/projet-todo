@@ -3,35 +3,32 @@
         <label id="bouton-filtrage">
             <input class="bouton-header" type="button" value="Filtrage">
             <div id="menu-filtrage" class="menu-filtre">
-                <button id="filtreFaible" class="filtre-priorite">Faible</button>
-                <button id="filtreMoyen" class="filtre-priorite">Moyenne</button>
-                <button id="filtreEleve" class="filtre-priorite">Elevée</button>
-                <button id="filtreDesactiver" class="filtre-priorite">Désactiver</button>
+                <span id="filtreFaible" class="filtre-priorite">Faible</span>
+                <span id="filtreMoyen" class="filtre-priorite">Moyenne</span>
+                <span id="filtreEleve" class="filtre-priorite">Elevée</span>
+                <span id="filtreDesactiver" class="filtre-priorite">Désactiver</span>
             </div>
         </label>
         <label id="bouton-trier">
             <input class="bouton-header" type="button" value="Tri par date">
             <div id="menu-trier">
-                <p>trie par :</p>
-                <label class="option-tri">
-                    <input id="trie-date-creation" type="radio" name="trieDate">
-                    <p>Date de création</p>
-                </label>
-                <label class="option-tri">
-                    <input id="trie-date-limite" type="radio" name="trieDate">
-                    <p>Date limite</p>
-                </label>
-                <p>ordre :</p>
-                <label class="option-tri">
-                    <input id="trie-asc" type="radio" name="trieOrdre">
-                    <p>Croissant</p>
-                </label>
-                <label class="option-tri">
-                    <input id="trie-desc" type="radio" name="trieOrdre">
-                    <p>Decroisant</p>
-                </label>
-                <input id="valider-tri" class="tri-bouton" type="button" value="Valider">
-                <input id="trieDesactiver" class="tri-bouton" type="button" value="Désactiver">
+                <div class="sous-menu-trier">
+                    <label class="option-tri">
+                        <span id="valider-tri-creation-asc" class="tri-option"><p>Date de création</p><p>&#x2B9D;</p></span>
+                    </label>
+                    <label class="option-tri">
+                        <span id="valider-tri-creation-desc" class="tri-option"><p>Date de création</p><p>&#x2B9F;</p></span>
+                    </label>
+                    <label class="option-tri">
+                    <span id="valider-tri-limite-asc" class="tri-option"><p>Date limite</p><p>&#x2B9D;</p></span>
+                    </label>
+                    <label class="option-tri">
+                        <span id="valider-tri-limite-desc" class="tri-option"><p>Date limite</p><p>&#x2B9F;</p></span>
+                    </label>
+                    <label class="option-tri">
+                        <span id="trieDesactiver" class="tri-option">Désactiver</span>
+                    </label>
+                </div>
             </div>
         </label>
         <input class="bouton-header" type="button" value="Historique">

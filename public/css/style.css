@@ -17,7 +17,8 @@ html {
 *,
 *::after,
 *::before {
-    box-sizing: inherit;
+  box-sizing: inherit;
+  margin: 0;
 }
 
 body {
@@ -75,37 +76,53 @@ header form,
     position: absolute;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: var(--couleur-brun_pale);
+    background-color: #fff;
     border: 1px solid var(--couleur-brun_fonce);
-    padding: 10px;
 }
 
-.filtre-priorite {
-    color: var(--couleur-beige);
-    background-color: var(--couleur-brun_fonce);
+
+.filtre-priorite{
+    color: var(--couleur-brun_fonce);
+    padding: 0.5rem;
+    text-align: center;
 }
 
-#menu-trier {
-    display: none;
-    position: absolute;
-    flex-direction: column;
-    gap: 4px;
-    background-color: var(--couleur-brun_pale);
-    border: 1px solid var(--couleur-brun_fonce);
-    padding: 10px;
+.filtre-priorite:hover{
+  background-color:#aaa;
 }
 
-#menu-trier p {
-    margin: 4px;
+#menu-trier{
+  display: none;
+  color: var(--couleur-brun_fonce);
+  align-items: center;
+  position: absolute;
+  flex-direction: column;
+  gap: 0.5rem;
+  
 }
 
-.option-tri {
-    display: flex;
+.sous-menu-trier{
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  left: 10px;
+  background-color: #fff;
+  border: 1px solid var(--couleur-brun_fonce);
+  left: 4.25rem;
 }
 
-.tri-bouton {
-    color: var(--couleur-beige);
-    background-color: var(--couleur-brun_fonce);
+.sous-menu-trier span{
+  display: flex;
+  justify-content: space-between;
+}
+
+.option-tri{
+  padding: .5rem;
+}
+
+.option-tri:hover{
+  background-color:#aaa;
+  padding: .5rem;
 }
 
 #conteneur-tache {
