@@ -108,6 +108,11 @@ header form,
   flex-direction: column;
 }
 
+.sous-menu-trier span{
+  display: flex;
+  justify-content: space-between;
+}
+
 #menu-trier p{
     padding: 3px;
 }
