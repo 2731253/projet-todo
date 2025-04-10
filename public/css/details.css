@@ -9,6 +9,7 @@
 
 body{
     background-color: var(--couleur-brun_pale);
+    margin: 0;
 }
 
 header {

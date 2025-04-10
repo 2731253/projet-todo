@@ -16,6 +16,7 @@ html {
 *::after,
 *::before {
   box-sizing: inherit;
+  margin: 0;
 }
 
 body {
@@ -57,40 +58,48 @@ header .bouton-header:hover {
     position: absolute;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: var(--couleur-brun_pale);
+    background-color: white;
     border: 1px solid var(--couleur-brun_fonce);
-    padding: 10px;
 }
 
 
 .filtre-priorite{
     color: var(--couleur-beige);
-    background-color: var(--couleur-brun_fonce);
+    padding: 10px;
+    text-align: center;
+}
 
+.filtre-priorite:hover{
+  background-color:#ddd;
+  padding: 10px;
 }
 
 #menu-trier{
-    display: none;
-    position: absolute;
-    flex-direction: column;
-    gap: 4px;
-    background-color: var(--couleur-brun_pale);
-    border: 1px solid var(--couleur-brun_fonce);
-    padding: 10px;
+  display: none;
+  align-items: center;
+  position: absolute;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: white;
+  border: 1px solid var(--couleur-brun_fonce);
+}
+
+.sous-menu-trier{
+  display: flex;
+  flex-direction: column;
 }
 
 #menu-trier p{
-    margin: 4px;
+    padding: 3px;
 }
 
 .option-tri{
-    display: flex;
+  padding: 10px;
 }
 
-.tri-bouton{
-    color: var(--couleur-beige);
-    background-color: var(--couleur-brun_fonce);
-
+.option-tri:hover{
+  background-color:#ddd;
+  padding: 10px;
 }
 
 #conteneur-tache {
