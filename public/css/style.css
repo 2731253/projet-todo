@@ -60,29 +60,30 @@ header .bouton-header:hover {
     position: absolute;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: white;
+    background-color: #fff;
     border: 1px solid var(--couleur-brun_fonce);
 }
 
 
 .filtre-priorite{
-    color: var(--couleur-beige);
+    color: var(--couleur-brun_fonce);
     padding: 10px;
     text-align: center;
 }
 
 .filtre-priorite:hover{
-  background-color:#ddd;
+  background-color:#aaa;
   padding: 10px;
 }
 
 #menu-trier{
   display: none;
+  color: var(--couleur-brun_fonce);
   align-items: center;
   position: absolute;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: white;
+  background-color: #fff;
   border: 1px solid var(--couleur-brun_fonce);
 }
 
@@ -100,7 +101,7 @@ header .bouton-header:hover {
 }
 
 .option-tri:hover{
-  background-color:#ddd;
+  background-color:#aaa;
   padding: 10px;
 }
 
