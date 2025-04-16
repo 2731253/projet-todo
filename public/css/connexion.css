@@ -1,3 +1,23 @@
+:root {
+    --couleur-blanche: #fff;
+    --couleur-brun_pale: #bf976b;
+    --couleur-beige: #fff7ee;
+    --couleur-brun_fonce: #8a6d4d;
+    --couleur-vert: #776e18;
+    --couleur-rouge: #842c2c;
+}
+body {
+    margin: 0;
+}
+
+header {
+    background-color: var(--couleur-brun_fonce);
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .form-authentification {
     display: flex;
     flex-direction: column;
@@ -11,15 +31,83 @@
     flex-direction: column;
 }
 
-#connexion-erreur,
-#inscription-erreur {
-    white-space: pre-line;
-}
-
 #connexion-retour {
     background-color: lightgray;
     text-decoration: none;
     border-radius: 5px;
     padding: 1rem;
     color: black;
+}
+section {
+    height: 100vh;
+    padding: 2rem;
+    background-color: var(--couleur-beige);
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.contenu-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+    justify-content: center;
+    padding-bottom: 10rem;
+}
+
+#connexion-retour {
+    align-self: flex-start;
+    margin-top: auto;
+    margin-left: 2rem;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+button {
+    max-width: 50rem;
+    padding: 0.75rem;
+    border: 1px solid var(--couleur-brun_pale);
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: var(--couleur-brun_fonce);
+    color: var(--couleur-blanche);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--couleur-brun_pale);
+}
+
+#connexion-retour {
+    display: inline-block;
+    text-align: center;
+    background-color: var(--couleur-brun_fonce);
+    border-radius: 5px;
+    padding: 1rem;
+    color: var(--couleur-blanche);
+    text-decoration: none;
+    margin-top: 1rem;
+}
+#section-inscription {
+    position: relative;
+}
+
+#btn-retour-connexion {
+    display: block;
+    margin: 2rem auto 0 auto;
+}
+
+#connexion-retour {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    margin-top: 0;
 }

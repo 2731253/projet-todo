@@ -1,12 +1,33 @@
-let inputCourriel = document.getElementById("input-courriel");
-let inputMotDePasse = document.getElementById("input-mot-de-passe");
-let inputCourriel2 = document.getElementById("input-courriel2");
-let inputMotDePasse2 = document.getElementById("input-mot-de-passe2");
-let inputNom = document.getElementById("input-nom");
-let formConnexion = document.getElementById("form-connexion");
-let formIncription = document.getElementById("form-inscription");
-let erreurConnexion = document.getElementById("connexion-erreur");
+const inputCourriel = document.getElementById("input-courriel");
+const inputMotDePasse = document.getElementById("input-mot-de-passe");
+const inputCourriel2 = document.getElementById("input-courriel2");
+const inputMotDePasse2 = document.getElementById("input-mot-de-passe2");
+const inputNom = document.getElementById("input-nom");
 
+const formConnexion = document.getElementById("form-connexion");
+const formInscription = document.getElementById("form-inscription");
+
+const sectionConnexion = document.getElementById("section-connexion");
+const sectionInscription = document.getElementById("section-inscription");
+
+const btnAfficherInscription = document.getElementById(
+    "btn-afficher-inscription"
+);
+const btnRetourConnexion = document.getElementById("btn-retour-connexion");
+
+// Afficher le formulaire d'inscription
+btnAfficherInscription.addEventListener("click", () => {
+    sectionConnexion.style.display = "none";
+    sectionInscription.style.display = "flex";
+});
+
+// Revenir au formulaire de connexion
+btnRetourConnexion.addEventListener("click", () => {
+    sectionInscription.style.display = "none";
+    sectionConnexion.style.display = "flex";
+});
+
+// Connexion
 formConnexion.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -15,22 +36,19 @@ formConnexion.addEventListener("submit", async (event) => {
         password: inputMotDePasse.value,
     };
 
-    let response = await fetch("/connexion", {
+    const response = await fetch("/connexion", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     });
-    if (response.ok) {
-        erreurConnexion.innerHTML = "";
-        window.location.replace("/");
-    } else {
-        let data = await response.json();
 
-        erreurConnexion.innerHTML = "echec de connexion:\n\n" + data.error;
+    if (response.ok) {
+        window.location.replace("/");
     }
 });
 
-formIncription.addEventListener("submit", async (event) => {
+// Inscription
+formInscription.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const data = {
@@ -39,17 +57,13 @@ formIncription.addEventListener("submit", async (event) => {
         nom: inputNom.value,
     };
 
-    let response = await fetch("/inscription", {
+    const response = await fetch("/inscription", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
     });
-    if (response.ok) {
-        erreurConnexion.innerHTML = "";
-        window.location.replace("/");
-    } else {
-        let data = await response.json();
 
-        erreurConnexion.innerHTML = "echec de d'inscription:\n\n" + data.error;
+    if (response.ok) {
+        window.location.replace("/");
     }
 });
