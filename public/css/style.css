@@ -50,7 +50,7 @@ header .bouton-header {
     color: var(--couleur-beige);
     border: none;
     height: 100%;
-    padding: 0rem 1.2rem;
+    padding: 0rem 1.5rem;
     border-left: 2px solid #57412a;
     margin-left: -.5rem;
 }
