@@ -64,7 +64,7 @@
         <div class="historique-entete">Historique de la tâche</div>
         {{#each todo.changements}}
           <div class="historique-ligne">
-            <p>[{{date this.date_creation format="YYYY-MM-DDThh:mm:ss"}}]
+            <p>{{!-- [{{date this.date_creation format="YYYY-MM-DDThh:mm:ss"}}] --}}
               {{this.par_user.nom}}
               ({{this.par_user.id}}):
               {{this.changement}}</p>
