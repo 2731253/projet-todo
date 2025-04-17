@@ -14,6 +14,7 @@ const btnAfficherInscription = document.getElementById(
     "btn-afficher-inscription"
 );
 const btnRetourConnexion = document.getElementById("btn-retour-connexion");
+import { validateConnexion, validateInscription } from "./validation.js";
 
 // Afficher le formulaire d'inscription
 btnAfficherInscription.addEventListener("click", () => {
@@ -30,40 +31,42 @@ btnRetourConnexion.addEventListener("click", () => {
 // Connexion
 formConnexion.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (validateConnexion()) {
+        const data = {
+            email: inputCourriel.value,
+            password: inputMotDePasse.value,
+        };
 
-    const data = {
-        email: inputCourriel.value,
-        password: inputMotDePasse.value,
-    };
+        const response = await fetch("/connexion", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
 
-    const response = await fetch("/connexion", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-        window.location.replace("/");
+        if (response.ok) {
+            window.location.replace("/");
+        }
     }
 });
 
 // Inscription
 formInscription.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (validateInscription()) {
+        const data = {
+            email: inputCourriel2.value,
+            password: inputMotDePasse2.value,
+            nom: inputNom.value,
+        };
 
-    const data = {
-        email: inputCourriel2.value,
-        password: inputMotDePasse2.value,
-        nom: inputNom.value,
-    };
+        const response = await fetch("/inscription", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+        });
 
-    const response = await fetch("/inscription", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-    });
-
-    if (response.ok) {
-        window.location.replace("/");
+        if (response.ok) {
+            window.location.replace("/");
+        }
     }
 });

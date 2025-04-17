@@ -19,10 +19,10 @@ header {
 }
 
 .form-authentification {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 1rem;
 }
 
@@ -110,4 +110,16 @@ button:hover {
     bottom: 1rem;
     left: 1rem;
     margin-top: 0;
+}
+.message-erreur {
+    color: var(--couleur-rouge);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+    display: block;
+    min-height: 1rem;
+}
+.form-group {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 50rem;
 }
