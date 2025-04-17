@@ -41,7 +41,6 @@ router.post("/connexion", (request, response, next) => {
         isPasswordValid(request.body.password)
     ) {
         passport.authenticate("local", (error, user, info) => {
-            console.log("bob", user);
             if (error) {
                 next(error);
             } else if (!user) {
@@ -74,11 +73,11 @@ router.post("/deconnexion", (request, response) => {
         response.status(401).end();
         return;
     }
+    request.session.user = null;
     request.logOut((error) => {
         if (error) {
             next(error);
         }
-        console.log("oui");
     });
 
     response.redirect("/");
@@ -90,6 +89,7 @@ router.post("/inscription", async (request, response) => {
     if (isEmailValid(email) && isPasswordValid(password) && isNomValid(nom)) {
         try {
             const user = await addUser(email, password, nom);
+            request.session.user = user;
             response
                 .status(200)
                 .json({ user, message: "Utilisateur ajouté avec succès" });
@@ -105,12 +105,14 @@ router.post("/inscription", async (request, response) => {
 
 //Route pour afficher les taches par statuts
 router.get("/", async (request, response) => {
-    if (!request.session.id_user) {
-        // verifier si un user est deja connecter
-        request.session.id_user = 123;
-    }
     const statuts = await getStatuts();
     const todos = await getTodos();
+    let user;
+    if (request.session.user) {
+        user = request.session.user;
+    } else {
+        user = "";
+    }
     response.render("index", {
         titre: "Accueil",
         styles: ["/css/style.css"],
@@ -118,6 +120,7 @@ router.get("/", async (request, response) => {
         todos: todos,
         priorites: await getPriorites(),
         statuts: statuts,
+        user: user,
         utilisateurs: await getUtilisateurs(),
     });
 });

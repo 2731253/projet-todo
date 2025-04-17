@@ -23,7 +23,7 @@ export const addUser = async (email, password, nom) => {
             email,
             password: await bcrypt.hash(password, 10),
             nom,
-            type: "USER",
+            type: "user",
         }
     });
     return user;

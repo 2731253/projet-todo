@@ -31,14 +31,14 @@
                 </div>
             </div>
         </label>
-        <input class="bouton-header" type="button" value="Historique">
-        <input class="bouton-header" type="button" value="Utilisateur">
 
+        {{#if (eq user "")}}
         <input class="bouton-header" id="bouton-connexion" type="button" value="Connexion">
+        {{/if}}
 
         {{#if user}}
         <form method="post" class="bouton-deconnexion"  action="/deconnexion">
-            <input type="submit" id="bouton-deconnexion" class="bouton-header" value="Deconnexion" />
+            <input type="submit" id="bouton-deconnexion" class="bouton-header" value="Deconnexion: {{user.nom}} ({{user.type}})" />
         </form>
         {{/if}}
 

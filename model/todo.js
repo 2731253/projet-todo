@@ -1,6 +1,8 @@
 // importer le client prisma
 import { PrismaClient } from "@prisma/client";
 
+import bcrypt from "bcrypt";
+
 // Créer une instance du client prisma
 const prisma = new PrismaClient();
 
@@ -61,14 +63,23 @@ export const initialisation = async () => {
 
   const nombre_utilisateurs = await prisma.user.count();
   if (nombre_utilisateurs === 0) {
-    const nom = "Etudiant";
-    const email = "etudiant@email.com";
-    const password = "password";
-    const type = "user";
+    let nom = "Etudiant";
+    let email = "etudiant@email.com";
+    let password = await bcrypt.hash("password", 10);
+    let type = "user";
     await prisma.user.create({
       data: { nom, email, password, type },
     });
     console.log(`Utilisateur ajouté : ${nom}`);
+
+    nom = "Admin";
+    email = "admin@email.com";
+    password = await bcrypt.hash("password", 10);
+    type = "admin";
+    await prisma.user.create({
+      data: { nom, email, password, type },
+    });
+    console.log(`Administarteur ajouté : ${nom}`);
   }
 };
 
