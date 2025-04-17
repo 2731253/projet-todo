@@ -134,10 +134,7 @@ export const ajoutTodo = async (
 
 
   ConversionDate(todo);
-  const nouvelleDateCreation = formatDate(todo.date_creation);
-  const nouvelleDateLimite = formatDate(todo.date_limite);
-  const changement = `a ajouté la tache ${todo.titre}
-   `;
+  const changement = `a ajouté la tache ${todo.titre}`;
   const par_user_id = 1;
   const todo_id = todo.id;
   await prisma.changement.create({
@@ -252,9 +249,6 @@ export const updateTodo = async (
   });
   if (todo) {
     ConversionDate(todo);
-    const nouvelleDateCreation = formatDate(todo.date_creation);
-    const nouvelleDateLimite = formatDate(todo.date_limite);
-
     const changement = `a modifier la tache ${todo.titre}`;
     const par_user_id = 1;
     const todo_id = todo.id;
@@ -332,6 +326,12 @@ const ConversionDate =(todo) => {
     }
     if (todo.date_limite) {
       todo.date_limite = new Date(todo.date_limite).getTime();
+    }
+
+    if (todo.changements) {
+      for (let i = 0; i < todo.changements.length ; i++) {
+        todo.changements[i].date_creation = new Date(todo.changements[i].date_creation).getTime();
+      }
     }
   
 };
