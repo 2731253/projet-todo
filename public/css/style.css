@@ -39,7 +39,10 @@ header {
 
 nav #conteneur-bouton-header {
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0;
+    position: relative;
 }
 
 header .bouton-header {
@@ -47,16 +50,19 @@ header .bouton-header {
     color: var(--couleur-beige);
     border: none;
     height: 100%;
-    padding: 0 1rem;
+    padding: 0rem 1.2rem;
+    border-left: 2px solid #57412a;
+    margin-left: -.5rem;
 }
 
 header .bouton-header:hover {
+    background-color: var(--couleur-brun_foncer);
     cursor: pointer;
+    color: var(--couleur-blanche);
 }
 
 .barre_outils .bouton-header {
     height: 100%;
-    border-left: 2px solid #000;
     align-items: center;
     color: var(--couleur-beige);
 }
@@ -78,6 +84,7 @@ header form,
     gap: 0.5rem;
     background-color: #fff;
     border: 1px solid var(--couleur-brun_fonce);
+    left: auto;
 }
 
 
@@ -93,12 +100,13 @@ header form,
 
 #menu-trier{
   display: none;
+  position: absolute;
+  left: auto;
   color: var(--couleur-brun_fonce);
   align-items: center;
   position: absolute;
   flex-direction: column;
   gap: 0.5rem;
-  
 }
 
 .sous-menu-trier{
@@ -126,6 +134,7 @@ header form,
 }
 
 #conteneur-tache {
+    display: flex;
     padding: 2rem;
     display: flex;
     gap: 2rem;
@@ -162,6 +171,8 @@ header form,
     padding: 0px;
     background-color: var(--couleur-beige);
     min-height: 5vh;
+    border-left: 2px  solid var(--couleur-brun_fonce);
+    border-right: 2px  solid var(--couleur-brun_fonce);
 }
 
 .colonne-tache li {
@@ -234,4 +245,15 @@ main {
 a {
     text-decoration: none;
     color: var(--couleur-brun_fonce);
+}
+
+@media screen and (max-width: 780px) {
+    #conteneur-tache {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .colonne-tache {
+        width: 75vw;
+    }
 }
